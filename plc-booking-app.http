@@ -1,0 +1,7 @@
+@plc_booking_app_HostAddress = http://localhost:5258
+
+
+GET {{plc_booking_app_HostAddress}}/index.html
+Accept: application/json
+
+###
