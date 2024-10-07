@@ -1,4 +1,11 @@
-var builder = WebApplication.CreateBuilder(args);
+using Microsoft.Extensions.FileProviders;
+using System.IO;
+
+var builder = WebApplication.CreateBuilder(new WebApplicationOptions
+{
+    ContentRootPath = Path.GetFullPath(Directory.GetCurrentDirectory()),  // Explicitly set content root path
+    Args = args
+});
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -13,11 +20,15 @@ app.Use(async (context, next) =>
 
 app.UseDefaultFiles(new DefaultFilesOptions
 {
-    DefaultFileNames = new List<string> { "/app/bookings.html" }
+    DefaultFileNames = new List<string> { "index.html" }
 });
 
-
-app.UseStaticFiles();
+// Serve static files with absolute path explicitly defined
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")),
+    RequestPath = ""
+});
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
