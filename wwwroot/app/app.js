@@ -1,4 +1,4 @@
-﻿namespace plc_booking_app.wwwroot.app
+﻿namespace plc_booking_interface.wwwroot.app
 {
     public class app
     {

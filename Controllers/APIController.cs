@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using plc_booking_app.Model;
+using plc_booking_interface.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace plc_booking_app.Controllers
+namespace plc_booking_interface.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

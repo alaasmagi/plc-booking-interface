@@ -1,4 +1,4 @@
-﻿namespace plc_booking_app.Model
+﻿namespace plc_booking_interface.Model
 {
     public class Request
     {

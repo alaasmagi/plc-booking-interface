@@ -4,7 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>plc_booking_app</RootNamespace>
+    <RootNamespace>plc_booking_interface</RootNamespace>
     <UserSecretsId>d4b05795-e0a8-4931-97f7-900e75ab8d3a</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>.</DockerfileContext>
