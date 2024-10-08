@@ -5,7 +5,7 @@ using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SQLite;
+using Microsoft.Data.Sqlite;
 using System.IO;
 using System.Xml.Linq;
 using plc_booking_interface.Model;
@@ -39,17 +39,17 @@ namespace plc_booking_app.Backend
         public int checkPlcStatus(int plcId)
         {
             int result = 9;
-            using (SQLiteConnection connection = new SQLiteConnection(databaseConnection))
+            using (SqliteConnection connection = new SqliteConnection(databaseConnection))
             {
                 try
                 {
                     connection.Open();
                     string query = "SELECT plc_status FROM UL_PLC_STATUS WHERE plc_id = @plcId;";
-                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    using (SqliteCommand command = new SqliteCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@plcId", plcId);
 
-                        object status = command.ExecuteScalar();
+                        object? status = command.ExecuteScalar();
 
                         if (status != null)
                         {
@@ -68,13 +68,13 @@ namespace plc_booking_app.Backend
 
         void UpdatePlcStatus(int plcId, int plcStatus)
         {
-            using (SQLiteConnection connection = new SQLiteConnection(databaseConnection))
+            using (SqliteConnection connection = new SqliteConnection(databaseConnection))
             {
                 try
                 {
                     connection.Open();
                     string query = "UPDATE UL_PLC_BOOKINGS SET plc_status = @plcStatus WHERE plc_id = plcId;";
-                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    using (SqliteCommand command = new SqliteCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@plcId", plcId);
                         command.Parameters.AddWithValue("@plcStatus", plcStatus);
@@ -106,13 +106,13 @@ namespace plc_booking_app.Backend
         {
             Console.WriteLine(databaseConnection);
             Console.WriteLine(request.requestBody);
-            using (SQLiteConnection connection = new SQLiteConnection(databaseConnection))
+            using (SqliteConnection connection = new SqliteConnection(databaseConnection))
             {
                 try
                 {
                     connection.Open();
                     string query = "INSERT INTO UL_PLC_BOOKINGS (plc_id, booking_id, start, end) VALUES (@plcId, @bookingId, @startTimestamp, @endTimestamp);";
-                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    using (SqliteCommand command = new SqliteCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@plcId", request.plcId);
                         command.Parameters.AddWithValue("@bookingId", request.bookingId);
