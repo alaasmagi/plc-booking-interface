@@ -16,6 +16,27 @@ namespace plc_booking_app.Backend
     public class BLL
     {
         string databaseConnection = $"Data Source={Path.Combine(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"../../../Data/")), "UL_data.db")};Version=3;";
+        private const string Username = "123"; // Replace with your actual username
+        private const string Password = "456"; // Replace with your actual password
+
+        public bool IsAuthorized(HttpRequest request)
+        {
+            if (!request.Headers.ContainsKey("Authorization"))
+                return false;
+
+            var authHeader = request.Headers["Authorization"].ToString();
+            if (authHeader.StartsWith("Basic ", StringComparison.OrdinalIgnoreCase))
+            {
+                var token = authHeader.Substring("Basic ".Length).Trim();
+                var credentialString = Encoding.UTF8.GetString(Convert.FromBase64String(token));
+                var credentials = credentialString.Split(':');
+
+                return credentials.Length == 2 && credentials[0] == Environment.GetEnvironmentVariable("PLC_API_USER") && credentials[1] == 
+                                                                                                    Environment.GetEnvironmentVariable("PLC_API_PASS");
+            }
+
+            return false;
+        }
 
         public int checkPlcStatus(int plcId)
         {

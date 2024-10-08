@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using plc_booking_app.Backend;
+using System.Text;
 
 namespace plc_booking_interface.Controllers
 {
@@ -12,19 +13,30 @@ namespace plc_booking_interface.Controllers
     public class RequestsController : ControllerBase
     {
         private static List<(Guid Id, Request request)> _requests = new List<(Guid, Request)>();
-        public BLL Logic = new BLL();
+        public BLL Logic = new BLL(); 
+
 
         // GET: api/requests
         [HttpGet]
         public ActionResult<IEnumerable<Request>> GetRequests()
         {
+            if (!Logic.IsAuthorized(Request))
+            {
+                return Unauthorized("Invalid credentials");
+            }
+
             return Ok(_requests.Select(r => r.request));
         }
 
         // GET: api/requests/{id}
-        [HttpGet("{id}")]
+         [HttpGet("{id}")]
         public ActionResult<Request> GetRequest(Guid id)
         {
+            if (!Logic.IsAuthorized(Request))
+            {
+                return Unauthorized("Invalid credentials");
+            }
+
             var request = _requests.FirstOrDefault(r => r.Id == id);
 
             if (request.Equals(default))
@@ -39,6 +51,12 @@ namespace plc_booking_interface.Controllers
         [HttpPost]
         public ActionResult<Request> PostRequest(Request request)
         {
+
+            if (!Logic.IsAuthorized(Request))
+            {
+                return Unauthorized("Invalid credentials");
+            }
+
             if (request == null)
             {
                 return BadRequest("Request data is null.");
@@ -54,7 +72,6 @@ namespace plc_booking_interface.Controllers
 
 
             Logic.InsertNewBooking(request);
-            Console.WriteLine("Toimib");
             return CreatedAtAction(nameof(GetRequest), new { id }, request);
         }
 
