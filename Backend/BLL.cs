@@ -20,6 +20,12 @@ namespace plc_booking_app.Backend
         string databaseConnection = $"Data Source={Path.Combine(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"../../../Data/")), "UL_data.db")};Version=3;";
         public bool IsAuthorized(HttpRequest request)
         {
+            if (Environment.GetEnvironmentVariable("PLC_API_USER") == null || Environment.GetEnvironmentVariable("PLC_API_PASS") == null)
+            {
+                Console.WriteLine("Ei leitud");
+            }
+
+
             if (!request.Headers.ContainsKey("Authorization"))
                 return false;
 
