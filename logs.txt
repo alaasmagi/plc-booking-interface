@@ -1,0 +1,7 @@
+2024-10-08 23:44:28 - IMPORTANT: POST request received successfully.
+2024-10-08 23:44:50 - IMPORTANT: POST request received successfully.
+2024-10-08 23:44:50 - IMPORTANT: Booking insertion successful. Booking-ID: 141a36c4-2166-4f25-9453-f37977800268
+2024-10-08 23:45:01 - IMPORTANT: POST request received successfully.
+2024-10-08 23:45:01 - IMPORTANT: Booking removal successful. Booking-ID: 141a36c4-2166-4f25-9453-f37977800268
+2024-10-08 23:48:15 - IMPORTANT: POST request received successfully.
+2024-10-08 23:48:15 - WARNING: Booking with ID: 141a36c4-2166-4f25-9453-f37977800268 does not exist. 

@@ -157,6 +157,7 @@ namespace plc_booking_interface.Backend
 
             if (DoesBookingExist(request.bookingId) == true)
             {
+                LogMessage($"Booking already exists. Booking-ID: {request.bookingId}", "WARNING");
                 return;
             }
             using (SqliteConnection connection = new SqliteConnection(databaseConnection))
@@ -188,6 +189,7 @@ namespace plc_booking_interface.Backend
         {
             if (DoesBookingExist(bookingId) == false)
             {
+                LogMessage($"Booking with ID: {bookingId} does not exist. ", "WARNING");
                 return;
             }
 
@@ -215,10 +217,50 @@ namespace plc_booking_interface.Backend
         public void LogMessage(string message, string messageType)
         {
             string logEntry = $"{DateTime.Now:yyyy-MM-dd HH:mm:ss} - {messageType}: {message}";
+            if (messageType == "ERROR" || messageType == "WARNING" || messageType == "IMPORTANT")
+            {
+                Console.WriteLine(logEntry);
+            }
             using (StreamWriter writer = new StreamWriter(logFilePath, true))
             {
                 writer.WriteLine(logEntry);
             }
+        }
+
+        public void SystemClean()
+        {
+            if (File.Exists(logFilePath))
+            {
+                File.Delete(logFilePath);
+                Console.WriteLine($"Log file '{logFilePath}' deleted at {DateTime.Now}");
+            }
+            else
+            {
+                Console.WriteLine($"Log file '{logFilePath}' does not exist.");
+            }
+
+            using (SqliteConnection connection = new SqliteConnection(databaseConnection))
+            {
+                try
+                {
+                    connection.Open();
+                    int oneHourAgo = ConvertDateToInt(DateTime.UtcNow) - 60;
+                    string query = "DELETE FROM UL_PLC_BOOKINGS WHERE end < @oneHourAgo;";
+                    using (SqliteCommand command = new SqliteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@oneHourAgo", oneHourAgo);
+                        int rowsAffected = command.ExecuteNonQuery();
+                        LogMessage($"Removed {rowsAffected} booking(s) that ended more than 1 hour ago.", "IMPORTANT");
+                    }
+
+                    connection.Close();
+                }
+                catch (Exception ex)
+                {
+                    LogMessage($"SystemClean() operation unsuccessful. {ex}", "ERROR");
+                }
+            }
+            LogMessage($"System cleaning done.", "IMPORTANT");
         }
     }
 }

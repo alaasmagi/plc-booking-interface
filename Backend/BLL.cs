@@ -12,13 +12,18 @@ using plc_booking_interface.Model;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using plc_booking_interface.Backend;
+using System.Timers;
+
 
 
 namespace plc_booking_app.Backend
 {
     public class BLL
     {
-        public DAL DataAccess = new DAL();
+        public static DAL DataAccess = new DAL();
+        public static System.Timers.Timer SystemCleanTimer;
+        public static System.Timers.Timer RefreshTimer;
+
         public bool IsAuthorized(HttpRequest request)
         {
             if (!request.Headers.ContainsKey("Authorization"))
@@ -57,5 +62,34 @@ namespace plc_booking_app.Backend
                 DataAccess.LogMessage("Booking request is invalid.", "WARNING");
             }
         }
+
+        private static void StartSystemCleanTimer()
+        {
+            SystemCleanTimer = new System.Timers.Timer(86400000);
+            SystemCleanTimer.Elapsed += SystemCleanElapseEvent;
+            SystemCleanTimer.AutoReset = true;
+            SystemCleanTimer.Enabled = true;
+            DataAccess.LogMessage($"System cleaning timer started. System will be cleaned in 24 hours.", "IMPORTANT");
+        }
+
+        private static void StartRefreshTimer()
+        {
+            RefreshTimer = new System.Timers.Timer(30000);
+            RefreshTimer.Elapsed += RefreshElapseEvent;
+            RefreshTimer.AutoReset = true;
+            RefreshTimer.Enabled = true;
+        }
+
+
+        private static void SystemCleanElapseEvent(Object source, ElapsedEventArgs e)
+        {
+            DataAccess.SystemClean();
+        }        
+        
+        private static void RefreshElapseEvent(Object source, ElapsedEventArgs e)
+        {
+
+        }
+
     }
 }
