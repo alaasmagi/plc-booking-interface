@@ -9,6 +9,8 @@ using System.Data.SQLite;
 using System.IO;
 using System.Xml.Linq;
 using plc_booking_interface.Model;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
 
 
 namespace plc_booking_app.Backend
@@ -16,9 +18,6 @@ namespace plc_booking_app.Backend
     public class BLL
     {
         string databaseConnection = $"Data Source={Path.Combine(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"../../../Data/")), "UL_data.db")};Version=3;";
-        private const string Username = "123"; // Replace with your actual username
-        private const string Password = "456"; // Replace with your actual password
-
         public bool IsAuthorized(HttpRequest request)
         {
             if (!request.Headers.ContainsKey("Authorization"))
@@ -32,9 +31,8 @@ namespace plc_booking_app.Backend
                 var credentials = credentialString.Split(':');
 
                 return credentials.Length == 2 && credentials[0] == Environment.GetEnvironmentVariable("PLC_API_USER") && credentials[1] == 
-                                                                                                    Environment.GetEnvironmentVariable("PLC_API_PASS");
+                                                                                                Environment.GetEnvironmentVariable("PLC_API_PASS");
             }
-
             return false;
         }
 
