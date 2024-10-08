@@ -96,7 +96,7 @@ h2 {
     border-radius: 60px;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1200px) {
     .page-container {
         flex-direction: column;
     }
