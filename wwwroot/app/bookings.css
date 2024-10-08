@@ -79,29 +79,34 @@ h2 {
     flex-direction: row;
 }
 
-
-.page-container {
-    display: flex;
-    height: 70%;
-    flex-direction: row;
-}
-
-    .page-container > div {
-        width: 45%;
-        height: 100%;
-        margin: 2rem;
-        padding: 0.1rem;
-        text-align: center;
-        border-radius: 60px;
+@media (max-width: 800px) {
+    .header-container {
+        flex-direction: column;
     }
 
-.plc-view {
-    border: 15px solid #55b9b1;
-    border-radius: 60px;
-    margin: 1.9rem;
-    margin-left: 10%;
-}
 
-.table-header {
-    background: #7db2b6;
-}
+    .page-container {
+        display: flex;
+        height: 70%;
+        flex-direction: row;
+    }
+
+        .page-container > div {
+            width: 45%;
+            height: 100%;
+            margin: 2rem;
+            padding: 0.1rem;
+            text-align: center;
+            border-radius: 60px;
+        }
+
+    .plc-view {
+        border: 15px solid #55b9b1;
+        border-radius: 60px;
+        margin: 1.9rem;
+        margin-left: 10%;
+    }
+
+    .table-header {
+        background: #7db2b6;
+    }
