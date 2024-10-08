@@ -1,5 +1,6 @@
 using Microsoft.Extensions.FileProviders;
 using System.IO;
+using System.Runtime.CompilerServices;
 
 var builder = WebApplication.CreateBuilder(new WebApplicationOptions
 {
@@ -23,7 +24,6 @@ app.UseDefaultFiles(new DefaultFilesOptions
     DefaultFileNames = new List<string> { "index.html" }
 });
 
-// Serve static files with absolute path explicitly defined
 app.UseStaticFiles(new StaticFileOptions
 {
     FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")),

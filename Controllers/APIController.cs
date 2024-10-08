@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using plc_booking_app.Backend;
 using System.Text;
+using plc_booking_interface.Backend;
 
 namespace plc_booking_interface.Controllers
 {
@@ -13,18 +14,20 @@ namespace plc_booking_interface.Controllers
     public class RequestsController : ControllerBase
     {
         private static List<(Guid Id, Request request)> _requests = new List<(Guid, Request)>();
-        public BLL Logic = new BLL(); 
-
+        public BLL BusinessLogic = new BLL();
+        public DAL DataAccess = new DAL();
 
         // GET: api/requests
         [HttpGet]
         public ActionResult<IEnumerable<Request>> GetRequests()
         {
-            if (!Logic.IsAuthorized(Request))
+            if (!BusinessLogic.IsAuthorized(Request))
             {
+                DataAccess.LogMessage("Failed to obtain access: authorization unsuccessful.", "INFO");
                 return Unauthorized("Invalid credentials");
             }
 
+            DataAccess.LogMessage("GET request received successfully.", "IMPORTANT");
             return Ok(_requests.Select(r => r.request));
         }
 
@@ -32,8 +35,9 @@ namespace plc_booking_interface.Controllers
          [HttpGet("{id}")]
         public ActionResult<Request> GetRequest(Guid id)
         {
-            if (!Logic.IsAuthorized(Request))
+            if (!BusinessLogic.IsAuthorized(Request))
             {
+                DataAccess.LogMessage("Failed to obtain access: authorization unsuccessful.", "INFO");
                 return Unauthorized("Invalid credentials");
             }
 
@@ -44,6 +48,7 @@ namespace plc_booking_interface.Controllers
                 return NotFound();
             }
 
+            DataAccess.LogMessage("GET request received successfully.", "IMPORTANT");
             return Ok(request.request);
         }
 
@@ -52,13 +57,15 @@ namespace plc_booking_interface.Controllers
         public ActionResult<Request> PostRequest(Request request)
         {
 
-            if (!Logic.IsAuthorized(Request))
+            if (!BusinessLogic.IsAuthorized(Request))
             {
+                DataAccess.LogMessage("Failed to obtain access: authorization unsuccessful.", "INFO");
                 return Unauthorized("Invalid credentials");
             }
 
             if (request == null)
             {
+                DataAccess.LogMessage("Failed to obtain data from client: empty request.", "WARNING");
                 return BadRequest("Request data is null.");
             }
 
@@ -70,8 +77,8 @@ namespace plc_booking_interface.Controllers
 
             _requests.Add((id, request));
 
-
-            Logic.InsertNewBooking(request);
+            DataAccess.LogMessage("POST request received successfully.", "IMPORTANT");
+            BusinessLogic.CheckRequestData(request);
             return CreatedAtAction(nameof(GetRequest), new { id }, request);
         }
 
