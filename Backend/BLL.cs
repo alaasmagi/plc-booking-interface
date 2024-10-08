@@ -17,7 +17,8 @@ namespace plc_booking_app.Backend
 {
     public class BLL
     {
-        string databaseConnection = $"Data Source={Path.Combine(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"../../../Data/")), "UL_data.db")};Version=3;";
+        string databaseConnection = $"Data Source={Path.Combine(Path.GetFullPath(Path.Combine
+                                            (AppDomain.CurrentDomain.BaseDirectory, @"../../../Data/")), "UL_data.db")};";
         public bool IsAuthorized(HttpRequest request)
         {
             if (!request.Headers.ContainsKey("Authorization"))
