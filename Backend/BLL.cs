@@ -8,13 +8,14 @@ using System.Threading.Tasks;
 using System.Data.SQLite;
 using System.IO;
 using System.Xml.Linq;
+using plc_booking_interface.Model;
 
 
 namespace plc_booking_app.Backend
 {
     public class BLL
     {
-        string databaseConnection = $"Data Source={Path.Combine(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..")), "UL_data.db")};Version=3;";
+        string databaseConnection = $"Data Source={Path.Combine(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"../../../Data/")), "UL_data.db")};Version=3;";
 
         public int checkPlcStatus(int plcId)
         {
@@ -82,8 +83,10 @@ namespace plc_booking_app.Backend
 
         }
 
-        public void InsertNewBooking(int plcId, string bookingId, int startTimestamp, int endTimestamp)
+        public void InsertNewBooking(Request request)
         {
+            Console.WriteLine(databaseConnection);
+            Console.WriteLine(request.requestBody);
             using (SQLiteConnection connection = new SQLiteConnection(databaseConnection))
             {
                 try
@@ -92,10 +95,10 @@ namespace plc_booking_app.Backend
                     string query = "INSERT INTO UL_PLC_BOOKINGS (plc_id, booking_id, start, end) VALUES (@plcId, @bookingId, @startTimestamp, @endTimestamp);";
                     using (SQLiteCommand command = new SQLiteCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@plcId", plcId);
-                        command.Parameters.AddWithValue("@bookingId", bookingId);
-                        command.Parameters.AddWithValue("@startTimestamp", startTimestamp);
-                        command.Parameters.AddWithValue("@endTimestamp", endTimestamp);
+                        command.Parameters.AddWithValue("@plcId", request.plcId);
+                        command.Parameters.AddWithValue("@bookingId", request.bookingId);
+                        command.Parameters.AddWithValue("@startTimestamp", request.bookingStart);
+                        command.Parameters.AddWithValue("@endTimestamp", request.bookingEnd);
 
                         command.ExecuteNonQuery();
                     }

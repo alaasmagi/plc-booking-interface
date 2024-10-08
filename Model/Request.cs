@@ -8,7 +8,5 @@
         public DateTime bookingEnd { get; set; }
         public string? plcId { get; set; }
         public string? requestBody { get; set; }
-        public string? apiAuthUser { get; set; }
-        public string? apiAuthKey { get; set; }
     }
 }

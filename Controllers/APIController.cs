@@ -3,6 +3,7 @@ using plc_booking_interface.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using plc_booking_app.Backend;
 
 namespace plc_booking_interface.Controllers
 {
@@ -11,6 +12,7 @@ namespace plc_booking_interface.Controllers
     public class RequestsController : ControllerBase
     {
         private static List<(Guid Id, Request request)> _requests = new List<(Guid, Request)>();
+        public BLL Logic = new BLL();
 
         // GET: api/requests
         [HttpGet]
@@ -50,6 +52,9 @@ namespace plc_booking_interface.Controllers
 
             _requests.Add((id, request));
 
+
+            Logic.InsertNewBooking(request);
+            Console.WriteLine("Toimib");
             return CreatedAtAction(nameof(GetRequest), new { id }, request);
         }
 
