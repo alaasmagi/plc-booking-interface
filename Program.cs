@@ -1,10 +1,11 @@
 using Microsoft.Extensions.FileProviders;
 using System.IO;
 using System.Runtime.CompilerServices;
+using plc_booking_app.Backend;
 
 var builder = WebApplication.CreateBuilder(new WebApplicationOptions
 {
-    ContentRootPath = Path.GetFullPath(Directory.GetCurrentDirectory()),  // Explicitly set content root path
+    ContentRootPath = Path.GetFullPath(Directory.GetCurrentDirectory()),
     Args = args
 });
 
@@ -33,5 +34,8 @@ app.UseStaticFiles(new StaticFileOptions
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
+
+BLL.StartSystemCleanTimer();
+BLL.StartRefreshTimer();
 
 app.Run();

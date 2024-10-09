@@ -44,16 +44,16 @@ namespace plc_booking_app.Backend
 
         public void CheckRequestData(Request request)
         {
-            if (request.requestBody == "occupy")
+            if (request.requestBody == "occupy" && DataAccess.GetPLCId(request.plcValue) > 0)
             {
                 DataAccess.InsertNewBooking(request);
             }
-            else if (request.requestBody == "update")
+            else if (request.requestBody == "update" && DataAccess.GetPLCId(request.plcValue) > 0)
             {
                 DataAccess.RemoveBooking(request.bookingId);
                 DataAccess.InsertNewBooking(request);
             }
-            else if (request.requestBody == "cancel")
+            else if (request.requestBody == "cancel" && DataAccess.GetPLCId(request.plcValue) > 0)
             {
                 DataAccess.RemoveBooking(request.bookingId);
             }
@@ -63,23 +63,22 @@ namespace plc_booking_app.Backend
             }
         }
 
-        private static void StartSystemCleanTimer()
+        public static void StartSystemCleanTimer()
         {
             SystemCleanTimer = new System.Timers.Timer(86400000);
             SystemCleanTimer.Elapsed += SystemCleanElapseEvent;
             SystemCleanTimer.AutoReset = true;
             SystemCleanTimer.Enabled = true;
-            DataAccess.LogMessage($"System cleaning timer started. System will be cleaned in 24 hours.", "IMPORTANT");
+            DataAccess.LogMessage("System cleaning timer started. System will be cleaned in 24 hours.", "IMPORTANT");
         }
 
-        private static void StartRefreshTimer()
+        public static void StartRefreshTimer()
         {
-            RefreshTimer = new System.Timers.Timer(30000);
+            RefreshTimer = new System.Timers.Timer(60000);
             RefreshTimer.Elapsed += RefreshElapseEvent;
             RefreshTimer.AutoReset = true;
             RefreshTimer.Enabled = true;
         }
-
 
         private static void SystemCleanElapseEvent(Object source, ElapsedEventArgs e)
         {
@@ -88,8 +87,7 @@ namespace plc_booking_app.Backend
         
         private static void RefreshElapseEvent(Object source, ElapsedEventArgs e)
         {
-
+            DataAccess.LogMessage("Refresh timer stopped. System will be cleaned in 24 hours.", "IMPORTANT");
         }
-
     }
 }
