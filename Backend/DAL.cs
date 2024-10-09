@@ -156,6 +156,8 @@ namespace plc_booking_interface.Backend
             int bookingStart = ConvertDateToInt(request.bookingStart); 
             int bookingEnd = ConvertDateToInt(request.bookingEnd);
 
+            string plcName = GetPLCName(plcId);
+
             if (DoesBookingExist(request.bookingId) == true)
             {
                 LogMessage($"Booking already exists. Booking-ID: {request.bookingId}", "WARNING");
@@ -182,7 +184,7 @@ namespace plc_booking_interface.Backend
                 {
                     LogMessage($"InsertNewBooking() operation unsuccessful. {ex}", "ERROR");
                 }
-                LogMessage($"Booking insertion successful. Booking-ID: {request.bookingId}", "IMPORTANT");
+                LogMessage($"Booking insertion successful. PLC-name: {plcName} Booking-ID: {request.bookingId}", "IMPORTANT");
             }
         }
 

@@ -7,3 +7,15 @@
 2024-10-08 23:48:15 - WARNING: Booking with ID: 141a36c4-2166-4f25-9453-f37977800268 does not exist. 
 2024-10-09 08:38:46 - IMPORTANT: System cleaning timer started. System will be cleaned in 24 hours.
 2024-10-09 08:39:46 - IMPORTANT: Refresh timer stopped. System will be cleaned in 24 hours.
+2024-10-09 08:43:50 - IMPORTANT: System cleaning timer started. System will be cleaned in 24 hours.
+2024-10-09 08:44:17 - IMPORTANT: POST request received successfully.
+2024-10-09 08:44:17 - WARNING: Booking request is invalid.
+2024-10-09 08:44:40 - IMPORTANT: POST request received successfully.
+2024-10-09 08:44:40 - IMPORTANT: Booking insertion successful. Booking-ID: 141a36c4-2166-4f25-9453-f37977800268
+2024-10-09 08:44:50 - IMPORTANT: POST request received successfully.
+2024-10-09 08:44:50 - WARNING: Booking already exists. Booking-ID: 141a36c4-2166-4f25-9453-f37977800268
+2024-10-09 08:44:50 - IMPORTANT: Refresh timer stopped. System will be cleaned in 24 hours.
+2024-10-09 08:45:00 - IMPORTANT: POST request received successfully.
+2024-10-09 08:45:00 - IMPORTANT: Booking removal successful. Booking-ID: 141a36c4-2166-4f25-9453-f37977800268
+2024-10-09 08:45:00 - IMPORTANT: Booking insertion successful. Booking-ID: 141a36c4-2166-4f25-9453-f37977800268
+2024-10-09 08:47:41 - IMPORTANT: System cleaning timer started. System will be cleaned in 24 hours.
