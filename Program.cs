@@ -36,6 +36,6 @@ app.UseAuthorization();
 app.MapControllers();
 
 BLL.StartSystemCleanTimer();
-BLL.StartRefreshTimer();
+//BLL.StartRefreshTimer();
 
 app.Run();
