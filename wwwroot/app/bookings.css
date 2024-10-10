@@ -47,25 +47,6 @@ header {
         padding-top: 1.5rem;
     }
 
-
-.index-table {
-    width: 95%;
-    border-collapse: collapse;
-}
-
-.index-table, .index-table th, .index-table td {
-    border: 1px solid black;
-}
-
-.index-table th, .index-table td {
-    padding: 10px;
-    text-align: left;
-}
-
-.index-table-content {
-    background: #bee1e4;
-}
-
 .header-container {
     display: flex;
     flex-direction: row;
@@ -74,7 +55,7 @@ header {
 .plc-page {
     width: 90%;
     height: 70%;
-    border: 15px solid #55b9b1;
+    border: 10px solid #55b9b1;
     border-radius: 60px;
     margin-left: 1rem;
     margin-right: 1rem;
@@ -140,12 +121,27 @@ header {
             width:40%
         }
 
-
-.table-header {
-    background: #7db2b6;
-}
-
-
 footer{
     
 }
+
+
+/*Requests table customisation: */
+.index-table {
+    width: 95%;
+    border-collapse: collapse;
+}
+
+    .index-table, .index-table th, .index-table td {
+        border: 1px solid black;
+    }
+
+        .index-table th, .index-table td {
+            padding: 10px;
+            text-align: left;
+        }
+
+.index-table-content {
+    background: #bee1e4;
+}
+
