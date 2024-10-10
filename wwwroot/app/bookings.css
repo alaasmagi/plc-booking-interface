@@ -1,51 +1,37 @@
-﻿@keyframes gradientAnimation {
-    0% {
-        background-color: #a8dbd3;
-    }
-
-    20% {
-        background-color: #a8dbd7;
-    }
-
-    40% {
-        background-color: #a8dbca;
-    }
-
-    60% {
-        background-color: #a8dbca;
-    }
-
-    80% {
-        background-color: #a8dbd7;
-    }
-
-    100% {
-        background-color: #a8dbd3;
-    }
-}
-
+﻿
 * {
     font-family: 'Roboto', sans-serif;
-    color: #152324;
-    animation: gradientAnimation 10s ease infinite;
+    color: #257180;
+    background-color: #F2E5BF;
+}
+
+h1 {
+    font-size: 50px;
 }
 
 html, body {
     height: 100%;
-    width: 100%;
+    width: 100%; /* Muuda laiust, et määrata, kui laia tahad */
+    margin: 0 auto; /* Keskendab body automaatselt horisontaalselt */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 header {
     display:flex;
-    flex-direction:row;
+    flex-direction:column;
 }
-    .header-logo {
-        width: 20%;
-    }
-    .header-title{
-        width:80%;
-        padding-top: 1.5rem;
-    }
+.header-logo {
+    height:50%;
+    width:100%;
+    padding-left:10rem;
+}
+.header-title{
+    height:50%;
+    width:100%;
+    text-align:center
+}
 
 .header-container {
     display: flex;
@@ -53,77 +39,165 @@ header {
 }
 
 .plc-page {
-    width: 90%;
+    width: 100%;
     height: 70%;
-    border: 10px solid #55b9b1;
+    border: 10px solid #FD8B51;
     border-radius: 60px;
     margin-left: 1rem;
     margin-right: 1rem;
     padding: 1rem;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
 }
-    .plc-page-header {
-        display:flex;
-        flex-direction:row;
-        height: 15%;
-        margin-left: 1rem;
-        margin-right: 1rem;
-        margin-top: 1rem;
-    }
-        .plc-page-header-title {
-            width: 20%;
-        }
+.plc-page-header {
+    display:flex;
+    flex-direction:row;
+    height: 15%;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 1rem;
+}
+.plc-page-header-title {
+    width: 20%;
+}
 
-        .plc-page-date-selection {
-            width: 30%;
-        }
+.plc-page-date-selection {
+    width: 30%;
+}
+.bold-label {
+    font-weight: bold;
+    font-size: medium;
+}
+.date-selection {
+    margin-top:1rem;
+}
 
-        .plc-page-time-selection {
-            width:30%;
-        }
+.plc-page-time-selection {
+    width:30%;
+}
+.slider {
+    width: 400px;
+    color: #FD8B51;
+    margin-bottom:1rem;
+}
+.plc-page-container {
+    display: flex;
+    flex-direction: row;
+    height: 70%;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
 
-    .plc-page-container{
-        display: flex;
-        flex-direction: row;
-        height: 70%;
-        margin-left: 1rem;
-        margin-right: 1rem;
-    }
-        .controllers-menu {
-            width:60%
-        }
-        .info-panel {
-            display:flex;
-            flex-direction:column;
-            width:40%
-        }
-            .info-panel-title {
-                height:15%
-            }
-            .info-panel-data {
-                height:85%
-            }
+.controllers-menu {
+    width: 70%;
+    display: flex;
+    flex-direction: row
+}
 
-    .plc-page-footer {
-        display: flex;
-        flex-direction: row;
-        height: 5%;
-        margin-left:1rem;
-        margin-right:1rem;
-        margin-bottom:1rem;
-    }
-        .plc-page-legend {
-            width: 60%
-        }
-        .plc-booking-link {
-            width:40%
-        }
+.controller-row {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: auto;
+    justify-content: space-between;
+}
+
+.radio-label {
+    width:200px;
+    flex-basis: 15%;
+    display: flex;
+    align-items: center;
+    padding: 0.5em;
+    margin-bottom: 0.5em;
+    background-color: #FD8B51;
+    border-radius: 10px;
+    font-weight:bold;
+    font-size:large;
+    transition: background-color 0.2s, border-color 0.2s;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.7);
+}
+
+.radio-label:hover {
+    background-color: #FDA273;
+}
+
+.radio-input {
+    position: absolute;
+    opacity: 0;
+}
+
+.radio-input:checked + .radio-label {
+    background-color: #CB6040;
+}
+
+.radio-input:focus + .radio-label {
+}
+
+.radio-inner-circle {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    border: 2px solid #888;
+    border-radius: 50%;
+    margin-right: 0.5em;
+    transition: border-color 0.2s;
+    position: relative;
+}
+
+.radio-input:checked + .radio-label .radio-inner-circle::after {
+    content: '';
+    display: block;
+    width: 0.5em;
+    height: 0.5em;
+    background-color: #8E432C;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+            
+.info-panel {
+    display:flex;
+    flex-direction:column;
+    width:30%
+}
+.info-panel-title {
+    height:15%
+}
+.info-panel-data {
+    height:85%
+}
+
+.plc-page-footer {
+    display: flex;
+    flex-direction: row;
+    height: 5%;
+    margin-left:1rem;
+    margin-right:1rem;
+    margin-bottom:1rem;
+}
+.plc-page-legend {
+    width: 60%
+}
+.plc-booking-link {
+    width:40%
+}
 
 footer{
     
 }
+
+
+
 
 
 /*Requests table customisation: */
@@ -132,14 +206,14 @@ footer{
     border-collapse: collapse;
 }
 
-    .index-table, .index-table th, .index-table td {
-        border: 1px solid black;
-    }
+.index-table, .index-table th, .index-table td {
+    border: 1px solid black;
+}
 
-        .index-table th, .index-table td {
-            padding: 10px;
-            text-align: left;
-        }
+.index-table th, .index-table td {
+    padding: 10px;
+    text-align: left;
+}
 
 .index-table-content {
     background: #bee1e4;

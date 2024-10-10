@@ -7,49 +7,116 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link href="../app/bookings.css" rel="stylesheet">
 </head>
-<body height="viewport">
+<body>
     <header>
         <div class="header-logo">
-            <img src="https://haldus.taltech.ee/sites/default/files/news-image/Logo_veeb_esitlus_png.png" width="200px" height="158px" />
+            <img src="https://2023.egovconference.ee/wp-content/uploads/2023/04/logo-taltech-1.png" width="200px" height="112px" />
         </div>
         <div class="header-title">
             <h1>Unitronics kontrollerite broneerimine</h1>
         </div>
     </header>
-    <div class="header">
-        
-    </div>
         <div class="plc-page">
             <div class="plc-page-header">
                 <div class="plc-page-header-title">
-                    <h3>Kõik kontrollerid:</h3>
+                    <h2>Kõik kontrollerid:</h2>
                 </div>
                 <div class="plc-page-date-selection">
-
+                    <label class="bold-label" for="bookingDate">Vali kuupäev:</label>
+                    <input class="date-selection" type="date" id="bookingDate" name="bookingDate">
                 </div>
                 <div class="plc-page-time-selection">
-                    <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+                    <input type="range" min="1" max="500" value="50" class="slider" id="myRange">
+                    <br />
+                    <b>Valitud kellaaeg: </b>
                 </div>
             </div>
             <div class="plc-page-container">
                 <div class="controllers-menu">
-                    <input type="radio" class="radio-button" label="PLC-1" name="radiobtn">
-                    <input type="radio" class="radio-button" label="PLC-2" name="radiobtn">
-                    <input type="radio" class="radio-button" label="PLC-3" name="radiobtn">
-                    <br />
-                    <input type="radio" class="radio-button" label="PLC-4" name="radiobtn">
-                    <input type="radio" class="radio-button" label="PLC-5" name="radiobtn">
-                    <input type="radio" class="radio-button" label="PLC-6" name="radiobtn">
-                    <br />
-                    <input type="radio" class="radio-button" label="PLC-7" name="radiobtn">
-                    <input type="radio" class="radio-button" label="PLC-8" name="radiobtn">
-                    <input type="radio" class="radio-button" label="PLC-9" name="radiobtn">
-                    <br />
-                    <input type="radio" class="radio-button" label="PLC-10" name="radiobtn">
-                    <input type="radio" class="radio-button" label="PLC-11" name="radiobtn">
-                    <input type="radio" class="radio-button" label="PLC-12" name="radiobtn">
-                    <br />
-                    <input type="radio" class="radio-button" label="PLC-13" name="radiobtn">
+                    <div class="radio-group">
+                        <div class="controller-row">
+                            <input class="radio-input" name="radio-group" id="1001" type="radio" checked>
+                            <label class="radio-label" for="1001">
+                                <span class="radio-inner-circle"></span>
+                                PLC-1
+                            </label>
+
+                            <input class="radio-input" name="radio-group" id="1002" type="radio">
+                            <label class="radio-label" for="1002">
+                                <span class="radio-inner-circle"></span>
+                                PLC-2
+                            </label>
+
+                            <input class="radio-input" name="radio-group" id="1003" type="radio">
+                            <label class="radio-label" for="1003">
+                                <span class="radio-inner-circle"></span>
+                                PLC-3
+                            </label>
+
+                            <input class="radio-input" name="radio-group" id="1004" type="radio">
+                            <label class="radio-label" for="1004">
+                                <span class="radio-inner-circle"></span>
+                                PLC-4
+                            </label>
+                        </div>
+                        <div class="controller-row">
+                            <input class="radio-input" name="radio-group" id="1005" type="radio">
+                            <label class="radio-label" for="1005">
+                                <span class="radio-inner-circle"></span>
+                                PLC-5
+                            </label>
+
+                            <input class="radio-input" name="radio-group" id="1006" type="radio">
+                            <label class="radio-label" for="1006">
+                                <span class="radio-inner-circle"></span>
+                                PLC-6
+                            </label>
+
+                            <input class="radio-input" name="radio-group" id="1007" type="radio">
+                            <label class="radio-label" for="1007">
+                                <span class="radio-inner-circle"></span>
+                                PLC-7
+                            </label>
+
+                            <input class="radio-input" name="radio-group" id="1008" type="radio">
+                            <label class="radio-label" for="1008">
+                                <span class="radio-inner-circle"></span>
+                                PLC-8
+                            </label>
+                        </div>
+                        <div class="controller-row">
+                            <input class="radio-input" name="radio-group" id="1009" type="radio">
+                            <label class="radio-label" for="1009">
+                                <span class="radio-inner-circle"></span>
+                                PLC-9
+                            </label>
+
+                            <input class="radio-input" name="radio-group" id="1010" type="radio">
+                            <label class="radio-label" for="1010">
+                                <span class="radio-inner-circle"></span>
+                                PLC-10
+                            </label>
+
+                            <input class="radio-input" name="radio-group" id="1011" type="radio">
+                            <label class="radio-label" for="1011">
+                                <span class="radio-inner-circle"></span>
+                                PLC-11
+                            </label>
+
+                            <input class="radio-input" name="radio-group" id="1012" type="radio">
+                            <label class="radio-label" for="1012">
+                                <span class="radio-inner-circle"></span>
+                                PLC-12
+                            </label>
+                        </div>
+                        <div class="controller-row">
+                            <input class="radio-input" name="radio-group" id="1013" type="radio">
+                            <label class="radio-label" for="1013">
+                                <span class="radio-inner-circle"></span>
+                                PLC-13
+                            </label>
+                        </div>
+                     </div>
                 </div>
                 <div class="info-panel">
                     <div class="info-panel-title">
