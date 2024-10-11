@@ -54,24 +54,25 @@ header {
     flex-direction: column;
 }
 .plc-page-header {
-    display:flex;
-    flex-direction:row;
+    width:100%;
+    display: flex;
+    flex-direction: row;
     height: 15%;
     margin-left: 1rem;
     margin-right: 1rem;
     margin-top: 1rem;
-    padding-left:2rem;
 }
-
 .plc-page-date-selection {
     width: 50%;
+    place-items: center;
 }
 .date-selection {
     margin-top:1rem;
 }
 
 .plc-page-time-selection {
-    width:50%;
+    width: 50%;
+    place-items: center;
 }
 .slider {
     width: 400px;
@@ -174,7 +175,7 @@ header {
     width: 30%;
     height: 90%;
     margin-left: 2rem;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3)
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 .info-panel-title {
     height: 15%;
@@ -185,19 +186,16 @@ header {
     margin: 0.5rem;
 }
 .plc-booking-link {
-    width: 40%;
-    margin: 0.5rem;
-    align-items:center;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centers horizontally */
 }
 
 .button {
     width: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     padding: 0.5em;
-    margin-left:40%;
-    margin-bottom: 0.5em;
+    margin-bottom: 1em;
     background-color: #FD8B51;
     border-radius: 10px;
     font-weight: bold;
