@@ -21,7 +21,6 @@ html, body {
 
 header {
     display: flex;
-    height: 100vh;
     flex-direction: column;
     background-color: #d9ceab;
     align-items: center; /* Centers content horizontally */
@@ -40,19 +39,20 @@ header {
 }
 
 .plc-page {
-    width: 90%;
-    height: 90%;
-    display: flex;
-    flex-direction: column;
-}
-.plc-page-header {
-    width: 90%;
     display: flex;
     flex-direction: row;
-    height: 15%;
-    margin-left: 10%;
-    margin-right: 10%;
-    margin-top: 1rem;
+}
+.plc-container {
+    display: flex;
+    flex-direction: column;
+    height: 83%;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+.plc-page-header {
+    display: flex;
+    flex-direction: row;
+
 }
 .date-selection-container {
     width: 50%;
@@ -62,18 +62,28 @@ header {
     width: 50%;
 }
 
+.controllers-menu {
+
+}
+.plc-page-legend {
+    width: 100%;
+}
+
 
 .slider {
     width: 400px;
     color: #FD8B51;
-    margin-bottom:1rem;
+    margin-bottom: 1rem;
+}
+
+.info-panel-container{
+    display:flex;
+    flex-direction:column;
 }
 .plc-page-container {
     display: flex;
     flex-direction: row;
-    height: 83%;
-    margin-left: 1rem;
-    margin-right: 1rem;
+    
 }
 
 .controllers-menu {
@@ -180,6 +190,10 @@ header {
     align-items: center;
     justify-content: center; /* Centers horizontally */
 }
+.development-data {
+    text-align: right
+}
+
 
 .button {
     width: 200px;
@@ -203,20 +217,6 @@ header {
     background-color: #CB6040;
 }
 
-.plc-page-footer {
-    display: flex;
-    flex-direction: row;
-    height: 2%;
-    margin-left:1rem;
-    margin-right:1rem;
-    margin-bottom:1rem;
-}
-.plc-page-legend {
-    width: 78%
-}
-.development-data {
-    text-align:right
-}
 
 
 
