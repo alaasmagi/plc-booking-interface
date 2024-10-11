@@ -19,13 +19,13 @@
         <div class="plc-page">
             <div class="plc-page-header">
                 <div class="plc-page-date-selection">
-                    <label class="bold-label" for="bookingDate">Vali kuupäev:</label>
+                    <b for="bookingDate">Vali kuupäev:</b>
                     <input class="date-selection" type="date" id="bookingDate" name="bookingDate">
                 </div>
                 <div class="plc-page-time-selection">
-                    <input type="range" min="1" max="500" value="50" class="slider" id="myRange">
+                    <input type="range" min="0" max="24" value="0" class="slider" id="myRange">
                     <br />
-                    <b>Valitud kellaaeg: </b>
+                    <b>Valitud kellaaeg: value</b>
                 </div>
             </div>
             <div class="plc-page-container">
@@ -126,7 +126,7 @@
                         <br />
                     </div>
                     <div class="plc-booking-link">
-                        <a href="">Broneeri nüüd</a>
+                        <button class="button">Broneeri</button>
                     </div>
                 </div>
             </div>
@@ -134,10 +134,11 @@
                 <div class="plc-page-legend">
                     - vaba | - hõivatud
                 </div>
+                <div class="development-data">
+                    <a href="">Project repo</a> | 
+                    <a href="">Developer</a>
+                </div>
             </div>     
         </div>
-    <footer>
-
-    </footer>
 </body>
 </html>

@@ -1,6 +1,7 @@
 ﻿
 * {
     font-family: 'Roboto', sans-serif;
+    font-size:20px;
     color: #257180;
 }
 
@@ -64,10 +65,6 @@ header {
 
 .plc-page-date-selection {
     width: 50%;
-}
-.bold-label {
-    font-weight: bold;
-    font-size: medium;
 }
 .date-selection {
     margin-top:1rem;
@@ -173,10 +170,11 @@ header {
     flex-direction: column;
     background-color: #d9ceab;
     border: 5px solid #79725f;
-    border-radius:30px;
+    border-radius: 30px;
     width: 30%;
     height: 90%;
     margin-left: 2rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3)
 }
 .info-panel-title {
     height: 15%;
@@ -189,9 +187,34 @@ header {
 .plc-booking-link {
     width: 40%;
     margin: 0.5rem;
+    align-items:center;
 }
 
+.button {
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5em;
+    margin-left:40%;
+    margin-bottom: 0.5em;
+    background-color: #FD8B51;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: large;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.7);
+    border: none;
+}
 
+.button:hover {
+    background-color: #FDA273;
+}
+
+.button:active {
+    background-color: #CB6040;
+}
 
 .plc-page-footer {
     display: flex;
@@ -202,14 +225,11 @@ header {
     margin-bottom:1rem;
 }
 .plc-page-legend {
-    width: 60%
-
-
-footer{
-    
+    width: 78%
 }
-
-
+.development-data {
+    text-align:right
+}
 
 
 
