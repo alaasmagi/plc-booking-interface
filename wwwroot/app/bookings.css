@@ -47,33 +47,27 @@ header {
 .plc-page {
     width: 100%;
     height: 90%;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    padding: 1rem;
     display: flex;
     flex-direction: column;
 }
 .plc-page-header {
-    width:100%;
+    width: 100%;
     display: flex;
     flex-direction: row;
     height: 15%;
-    margin-left: 1rem;
-    margin-right: 1rem;
+    margin-left: 10%;
+    margin-right: 10%;
     margin-top: 1rem;
 }
-.plc-page-date-selection {
+.date-selection-container {
     width: 50%;
-    place-items: center;
-}
-.date-selection {
-    margin-top:1rem;
 }
 
-.plc-page-time-selection {
+.time-selection-container {
     width: 50%;
-    place-items: center;
 }
+
+
 .slider {
     width: 400px;
     color: #FD8B51;
@@ -195,7 +189,7 @@ header {
 .button {
     width: 200px;
     padding: 0.5em;
-    margin-bottom: 1em;
+    margin-bottom: 1rem;
     background-color: #FD8B51;
     border-radius: 10px;
     font-weight: bold;

@@ -18,14 +18,18 @@
     </header>
         <div class="plc-page">
             <div class="plc-page-header">
-                <div class="plc-page-date-selection">
-                    <b for="bookingDate">Vali kuupäev:</b>
-                    <input class="date-selection" type="date" id="bookingDate" name="bookingDate">
+                <div class="date-selection-container">
+                    <div class="date-selection">
+                        <b for="bookingDate">Vali kuupäev:</b>
+                        <input type="date" id="bookingDate" name="bookingDate">
+                    </div>
                 </div>
-                <div class="plc-page-time-selection">
-                    <input type="range" min="0" max="24" value="0" class="slider" id="myRange">
-                    <br />
-                    <b>Valitud kellaaeg: value</b>
+                <div class="time-selection-container">
+                    <div class="time-selection">
+                        <input type="range" min="0" max="24" value="0" class="slider" id="myRange">
+                        <br />
+                        <b>Valitud kellaaeg: value</b>
+                    </div>
                 </div>
             </div>
             <div class="plc-page-container">
