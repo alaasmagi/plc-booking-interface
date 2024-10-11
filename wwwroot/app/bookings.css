@@ -169,7 +169,7 @@ header {
     display:flex;
     flex-direction:column;
     width:30%;
-    padding-left:1rem;
+    padding-left:2rem;
 }
 .info-panel-title {
     height:15%
