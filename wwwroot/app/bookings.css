@@ -39,19 +39,14 @@ header {
     background-color: transparent;
 }
 
-.header-container {
-    display: flex;
-    flex-direction: row;
-}
-
 .plc-page {
-    width: 100%;
+    width: 90%;
     height: 90%;
     display: flex;
     flex-direction: column;
 }
 .plc-page-header {
-    width: 100%;
+    width: 90%;
     display: flex;
     flex-direction: row;
     height: 15%;
@@ -101,7 +96,7 @@ header {
     flex-direction: column;
     flex-wrap: wrap;
     width: auto;
-    height:25rem;
+    height:15rem;
     justify-content: space-between;
 }
 
