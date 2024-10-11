@@ -2,7 +2,6 @@
 * {
     font-family: 'Roboto', sans-serif;
     color: #257180;
-    background-color: #F2E5BF;
 }
 
 h1 {
@@ -16,21 +15,27 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #F2E5BF;
 }
 
 header {
-    display:flex;
-    flex-direction:column;
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    background-color: #d9ceab;
+    align-items: center; /* Centers content horizontally */
+    justify-content: center;
 }
 .header-logo {
-    height:50%;
-    width:100%;
-    padding-left:10rem;
+    width: 100%; /* Full width of header */
+    padding: 2rem 0; /* Adjust as needed to control vertical space */
+    text-align: center; /* Center the logo horizontally */
+    background-color: transparent;
 }
-.header-title{
-    height:50%;
-    width:100%;
-    text-align:center
+.header-title {
+    width: 100%; /* Full width of header */ /* Adjust to control spacing around the title */
+    text-align: center;
+    background-color: transparent;
 }
 
 .header-container {
@@ -40,9 +45,7 @@ header {
 
 .plc-page {
     width: 100%;
-    height: 70%;
-    border: 10px solid #FD8B51;
-    border-radius: 60px;
+    height: 90%;
     margin-left: 1rem;
     margin-right: 1rem;
     padding: 1rem;
@@ -56,13 +59,11 @@ header {
     margin-left: 1rem;
     margin-right: 1rem;
     margin-top: 1rem;
-}
-.plc-page-header-title {
-    width: 20%;
+    padding-left:2rem;
 }
 
 .plc-page-date-selection {
-    width: 30%;
+    width: 50%;
 }
 .bold-label {
     font-weight: bold;
@@ -73,7 +74,7 @@ header {
 }
 
 .plc-page-time-selection {
-    width:30%;
+    width:50%;
 }
 .slider {
     width: 400px;
@@ -83,12 +84,13 @@ header {
 .plc-page-container {
     display: flex;
     flex-direction: row;
-    height: 70%;
+    height: 83%;
     margin-left: 1rem;
     margin-right: 1rem;
 }
 
 .controllers-menu {
+    padding-top: 10%;
     width: 70%;
     display: flex;
     flex-direction: row
@@ -107,6 +109,7 @@ header {
     flex-direction: column;
     flex-wrap: wrap;
     width: auto;
+    height:25rem;
     justify-content: space-between;
 }
 
@@ -166,35 +169,41 @@ header {
 }
 
 .info-panel {
-    background-color: #d9ceab;
     display: flex;
     flex-direction: column;
-    border: solid 5px, #79725f;
-    border-radius: 15px;
+    background-color: #d9ceab;
+    border: 5px solid #79725f;
+    border-radius:30px;
     width: 30%;
-    padding-left: 2rem;
+    height: 90%;
+    margin-left: 2rem;
 }
 .info-panel-title {
-    height:15%
+    height: 15%;
+    margin: 0.5rem;
 }
 .info-panel-data {
-    height:85%
+    height: 85%;
+    margin: 0.5rem;
 }
+.plc-booking-link {
+    width: 40%;
+    margin: 0.5rem;
+}
+
+
 
 .plc-page-footer {
     display: flex;
     flex-direction: row;
-    height: 5%;
+    height: 2%;
     margin-left:1rem;
     margin-right:1rem;
     margin-bottom:1rem;
 }
 .plc-page-legend {
     width: 60%
-}
-.plc-booking-link {
-    width:40%
-}
+
 
 footer{
     
