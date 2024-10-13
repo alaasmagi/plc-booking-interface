@@ -3,7 +3,7 @@
     --color-dark: #D9CEAB;
     --button-background: #FD8B51;
     --plc-available: #37A7BD;
-    --plc-unavailable: #BD4d37;
+    --plc-unavailable: #BD4D37;
 }
 
 * {
@@ -84,13 +84,30 @@ html, body {
 
 .plc-container-main {
     width: 100%;
-    height: 75%;
+    height: 55%;
 }
 
 .plc-container-legend {
+    display:flex;
     width: 100%;
     height: 5%;
-    padding-left: 5%;
+    padding-top:1%;
+    padding-left:8%;
+}
+.plc-available-legend {
+    width: 50px;
+    height: 25px;
+    background-color: var(--plc-available);
+    border-radius:10px;
+    margin-right:2%;
+}
+.plc-unavailable-legend {
+    width: 50px;
+    height: 25px;
+    background-color: var(--plc-unavailable);
+    border-radius: 10px;
+    margin-left: 10%;
+    margin-right:2%;
 }
 
 
@@ -169,7 +186,7 @@ html, body {
     flex-direction: column;
     flex-wrap: wrap;
     width: auto;
-    height: 20rem;
+    height: 100%;
     justify-content: space-evenly;
 }
 
@@ -243,10 +260,6 @@ html, body {
     }
 
 
-
-
-
-
     /*Mobile version*/
 @media (max-width: 1000px) {
     body {
@@ -261,13 +274,22 @@ html, body {
     .page-main {
         width: 100%;
         flex-direction: column;
+        height:200%;
     }
     .plc-container {
         width: 100%;
-        height: 100%;
+    }
+    .plc-container-main {
+        margin-top:5%;
+        margin-bottom: 10%;
+    }
+
+    .radio-group {
+        height:120%;
     }
     .plc-container-legend {
-        margin-bottom:3%;
+
+        margin-bottom:8%;
     }
     .info-container {
         width: 100%;
