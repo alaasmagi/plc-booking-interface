@@ -1,16 +1,24 @@
-﻿* {
+﻿:root {
+    --color-light: #F2E5BF;
+    --color-dark: #D9CEAB;
+    --button-background: #FD8B51;
+    --plc-available: #37A7BD;
+    --plc-unavailable: #BD4d37;
+}
+
+* {
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
     color: #257180;
-    overflow: hidden;
+    box-sizing:border-box
 }
 
 html, body {
+    margin: 0;
+    display: flex;
+    background-color: var(--color-light);
     height: 100vh;
     width: 100vw;
-    margin: 0 auto;
-    display: flex;
-    background-color: #F2E5BF;
 }
 
 
@@ -21,8 +29,7 @@ html, body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #d9ceab;
-    border: solid 1px;
+    background-color: var(--color-dark);
 }
 
 .page-logo > img {
@@ -37,9 +44,8 @@ html, body {
 
 
 .page-main {
-    height: 95%;
+    height: 100%;
     width: 65%;
-    border: solid 1px;
     display: flex;
     flex-direction: row;
     padding: 3%;
@@ -59,48 +65,49 @@ html, body {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 5%;
+    padding-left: 8%;
 }
 
 .plc.date-selection {
-    width: 50;
+    width: 5%;
 }
 
 .plc-time-selection {
     width: 50%;
+    padding-left: 2rem;
 }
 
 .slider {
-    width: 300px;
-    color: #FD8B51;
+    width: 80%;
     margin-bottom: 0.5rem;
 }
 
 .plc-container-main {
     width: 100%;
-    height: 70%;
+    height: 75%;
 }
 
 .plc-container-legend {
     width: 100%;
-    height: 10%;
+    height: 5%;
     padding-left: 5%;
 }
 
 
 .info-container {
-    height: 100;
+    height: 100%;
     width: 35%;
     display: flex;
     flex-direction: column;
+    overflow:visible;
 }
 
 .plc-info-container {
-    width: 100;
-    height: 85%;
+    width: 100%;
+    height: 90%;
     display: flex;
     flex-direction: column;
-    background-color: #d9ceab;
+    background-color: var(--color-dark);
     border: 5px solid #79725f;
     border-radius: 30px;
     margin-bottom: 9%;
@@ -108,39 +115,47 @@ html, body {
 }
 
 .plc-info-title {
-    width: 100;
+    width: 100%;
     height: 10%;
+    margin-bottom:5%;
+}
+.plc-info-title > h1 {
+    font-size: 26px;
 }
 
 .plc-info-main {
-    width: 100;
+    width: 100%;
     height: 83%;
 }
 
 .plc-info-button {
-    width: 100;
+    width: 100%;
     height: 7%;
     display: flex;
     justify-content: center;
-    align-items: center; /* Center vertically */
+    align-items: center;
 }
 
 .dev-info-container {
     width: 100%;
-    height: 10%;
+    height: 5%;
     display: flex;
     justify-items: center;
     justify-content: center;
 }
 
     .dev-info-container > a {
+        text-decoration:none;
         margin-left: 0.5rem;
         margin-right: 0.5rem;
     }
+    .dev-info-container > a:hover {
+        text-decoration:underline;
+    }
+
 
 
 /*Addons*/
-
 .controller-row {
     display: flex;
     flex-direction: row;
@@ -163,10 +178,12 @@ html, body {
     flex-basis: 15%;
     display: flex;
     align-items: center;
+    text-align:center;
     padding: 0.5em;
     margin-bottom: 0.5em;
-    background-color: #FD8B51;
+    background-color: var(--button-background);
     border-radius: 10px;
+    border: 5px solid var(--plc-available);
     font-weight: bold;
     font-size: large;
     transition: background-color 0.2s, border-color 0.2s;
@@ -183,21 +200,10 @@ html, body {
 }
 
     .radio-input:checked + .radio-label {
-        background-color: #CB6040;
+        background-color: #fc6417;
     }
 
-.radio-inner-circle {
-    display: inline-block;
-    width: 1em;
-    height: 1em;
-    border: 2px solid #888;
-    border-radius: 50%;
-    margin-right: 0.5em;
-    transition: border-color 0.2s;
-    position: relative;
-}
-
-.radio-input:checked + .radio-label .radio-inner-circle::after {
+.radio-input:checked + .radio-label´{
     content: '';
     display: block;
     width: 0.5em;
@@ -211,14 +217,14 @@ html, body {
 }
 
 .button {
-    width: 200px;
+    width:70%;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 0.5em;
     margin-left: 40%;
     margin-bottom: 0.5em;
-    background-color: #FD8B51;
+    background-color: var(--button-background);
     border-radius: 10px;
     font-weight: bold;
     font-size: large;
@@ -233,7 +239,7 @@ html, body {
     }
 
     .button:active {
-        background-color: #CB6040;
+        background-color: #fc6417;
     }
 
 
@@ -242,3 +248,37 @@ html, body {
 
 
     /*Mobile version*/
+@media (max-width: 1000px) {
+    body {
+        flex-direction:column;
+        font-size:14px;
+    }
+    .page-header {
+        padding-top:3%;
+        height:50%;
+        width:100%;
+    }
+    .page-main {
+        width: 100%;
+        flex-direction: column;
+    }
+    .plc-container {
+        width: 100%;
+        height: 100%;
+    }
+    .plc-container-legend {
+        margin-bottom:3%;
+    }
+    .info-container {
+        width: 100%;
+        height: 100%;
+    }
+    .plc-info-container {
+        height: 100%;
+        padding: 5%;
+    }
+    .dev-info-container {
+        margin-bottom:3%;
+    }
+    
+}
