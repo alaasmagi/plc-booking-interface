@@ -262,38 +262,63 @@ html, body {
 
     /*Mobile version*/
 @media (max-width: 2000px) and (min-height: 1500px){
+    * {
+        font-size:26px;
+    }
     html, body  {
         flex-direction:column;
         font-size:14px;
+
     }
     .page-header {
         padding-top:3%;
-        height:50%;
+        height:20%;
         width:100%;
     }
     .page-main {
         width: 100%;
         flex-direction: column;
-        height:200%;
+        height:80%;
+        margin:0;
     }
     .plc-container {
         width: 100%;
+        height: 70%;
+        margin: 0;
     }
     .plc-container-main {
-        margin-top:5%;
-        margin-bottom: 10%;
+        margin-top: 5%;
+        height: 100%;
+    }
+
+    .controller-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        width: 100%;
+        margin-bottom: 1em;
     }
 
     .radio-group {
-        height:120%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        width: auto;
+        height: 60%;
+        justify-content: space-evenly;
+    }
+    .radio-label {
+        width: 200px;
+        flex-basis: 20%;
     }
     .plc-container-legend {
 
+        height:20%;
         margin-bottom:8%;
     }
     .info-container {
         width: 100%;
-        height: 100%;
+        height: 50%;
     }
     .plc-info-container {
         height: 100%;
