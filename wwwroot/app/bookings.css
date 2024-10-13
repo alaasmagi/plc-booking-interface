@@ -220,7 +220,7 @@ html, body {
         background-color: #fc6417;
     }
 
-.radio-input:checked + .radio-label´{
+.radio-input:checked {
     content: '';
     display: block;
     width: 0.5em;
@@ -263,7 +263,7 @@ html, body {
     /*Mobile version*/
 @media (max-width: 2000px) and (min-height: 1500px){
     * {
-        font-size:26px
+        font-size:26px;
     }
     html, body  {
         flex-direction:column;
@@ -285,9 +285,11 @@ html, body {
         margin-top:5%;
         margin-bottom: 10%;
     }
-
     .radio-group {
-        height:120%;
+        height:80%;    
+    }
+    .radio-label {
+        transform:scale(1.4);
     }
     .plc-container-legend {
 
@@ -295,14 +297,14 @@ html, body {
     }
     .info-container {
         width: 100%;
-        height: 100%;
+        height: 50%;
     }
     .plc-info-container {
         height: 100%;
         padding: 5%;
     }
     .dev-info-container {
-        margin-bottom:3%;
+        margin-bottom: 3%;
     }
     
 }
