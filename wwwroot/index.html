@@ -24,9 +24,10 @@
                     <input class="date-selection" type="date" id="bookingDate" name="bookingDate">
                 </div>
                 <div class="plc-time-selection">
-                    <input type="range" min="0" max="24" value="0" class="slider" id="myRange">
+                    <b>Vali kellaaeg:</b>
+                    <input type="range" min="0" max="48" value="0" class="slider" id="timeRange" oninput="updateTime()">
                     <br />
-                    <b>Valitud kellaaeg: value</b>
+                    <b><span id="selectedTimeStart">00:00</span> - <span id="selectedTimeEnd">00:30</span></b>
                 </div>
             </div>
             <div class="plc-container-main">
@@ -81,7 +82,7 @@
 
                         <input class="radio-input" name="radio-group" id="1010" type="radio">
                         <label class="radio-label" for="1010">
-                           
+
                             PLC-10
                         </label>
 
@@ -129,5 +130,6 @@
             </div>
         </div>
     </div>
+    <script src="/app/app.js"></script>
 </body>
 </html>
