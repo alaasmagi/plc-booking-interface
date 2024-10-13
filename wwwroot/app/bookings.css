@@ -261,7 +261,7 @@ html, body {
 
 
     /*Mobile version*/
-@media (max-width: 800px) {
+@media (max-width: 1500px) and (min-height: 1500px){
     html, body  {
         flex-direction:column;
         font-size:14px;
