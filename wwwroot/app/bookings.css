@@ -261,10 +261,11 @@ html, body {
 
 
     /*Mobile version*/
-@media (max-width: 1000px) {
-    body {
+@media (max-width: 800px) {
+    html, body  {
         flex-direction:column;
         font-size:14px;
+        transform:scale(1.5);
     }
     .page-header {
         padding-top:3%;
