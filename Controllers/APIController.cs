@@ -17,6 +17,17 @@ namespace plc_booking_interface.Controllers
         public BLL BusinessLogic = new BLL();
         public DAL DataAccess = new DAL();
 
+        [HttpGet("booked_PLCs")]
+        public IActionResult GetBookedPLCs([FromQuery] string dateTimeStart, [FromQuery] string dateTimeEnd)
+        {
+            int startDateTime = DataAccess.ConvertDateToInt(DateTime.Parse(dateTimeStart));
+            int endDateTime = DataAccess.ConvertDateToInt(DateTime.Parse(dateTimeEnd));
+            List<int> bookedPLCs = DataAccess.GetAllBookedPLCs(startDateTime, endDateTime);
+
+            Console.WriteLine("Käis läbi");
+            return Ok(bookedPLCs);
+        }
+
         // GET: api/requests
         [HttpGet]
         public ActionResult<IEnumerable<Request>> GetRequests()

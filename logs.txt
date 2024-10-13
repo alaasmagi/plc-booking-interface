@@ -272,3 +272,45 @@
 2024-10-13 15:08:03 - IMPORTANT: System cleaning timer started. System will be cleaned in 24 hours.
 2024-10-13 15:11:43 - IMPORTANT: System cleaning timer started. System will be cleaned in 24 hours.
 2024-10-13 15:12:32 - IMPORTANT: System cleaning timer started. System will be cleaned in 24 hours.
+2024-10-13 16:09:14 - IMPORTANT: System cleaning timer started. System will be cleaned in 24 hours.
+2024-10-13 16:09:41 - IMPORTANT: System cleaning timer started. System will be cleaned in 24 hours.
+2024-10-13 16:12:25 - IMPORTANT: System cleaning timer started. System will be cleaned in 24 hours.
+2024-10-13 16:15:09 - IMPORTANT: System cleaning timer started. System will be cleaned in 24 hours.
+2024-10-13 16:16:28 - IMPORTANT: System cleaning timer started. System will be cleaned in 24 hours.
+2024-10-13 16:16:52 - IMPORTANT: System cleaning timer started. System will be cleaned in 24 hours.
+2024-10-13 16:24:34 - IMPORTANT: System cleaning timer started. System will be cleaned in 24 hours.
+2024-10-13 16:24:57 - IMPORTANT: System cleaning timer started. System will be cleaned in 24 hours.
+2024-10-13 16:25:14 - IMPORTANT: System cleaning timer started. System will be cleaned in 24 hours.
+2024-10-13 16:25:33 - IMPORTANT: System cleaning timer started. System will be cleaned in 24 hours.
+2024-10-13 16:50:41 - IMPORTANT: System cleaning timer started. System will be cleaned in 24 hours.
+2024-10-13 16:50:56 - IMPORTANT: System cleaning timer started. System will be cleaned in 24 hours.
+2024-10-13 16:51:27 - IMPORTANT: System cleaning timer started. System will be cleaned in 24 hours.
+2024-10-13 16:53:09 - IMPORTANT: System cleaning timer started. System will be cleaned in 24 hours.
+2024-10-13 16:54:02 - IMPORTANT: System cleaning timer started. System will be cleaned in 24 hours.
+2024-10-13 16:54:54 - IMPORTANT: System cleaning timer started. System will be cleaned in 24 hours.
+2024-10-13 16:56:29 - IMPORTANT: System cleaning timer started. System will be cleaned in 24 hours.
+2024-10-13 16:56:31 - ERROR: GetAllBookedPLCs() operation unsuccessful. Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 1: 'near "BETWEEN": syntax error'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.GetStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader()
+   at plc_booking_interface.Backend.DAL.GetAllBookedPLCs(Int32 startTime, Int32 endTime) in C:\dev\plc-booking-app\Backend\DAL.cs:line 52
+2024-10-13 16:57:17 - ERROR: GetAllBookedPLCs() operation unsuccessful. Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 1: 'near "BETWEEN": syntax error'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.GetStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader()
+   at plc_booking_interface.Backend.DAL.GetAllBookedPLCs(Int32 startTime, Int32 endTime) in C:\dev\plc-booking-app\Backend\DAL.cs:line 52
+2024-10-13 16:58:22 - IMPORTANT: System cleaning timer started. System will be cleaned in 24 hours.
+2024-10-13 16:59:26 - IMPORTANT: System cleaning timer started. System will be cleaned in 24 hours.
+2024-10-13 17:01:21 - IMPORTANT: System cleaning timer started. System will be cleaned in 24 hours.
+2024-10-13 17:01:59 - IMPORTANT: System cleaning timer started. System will be cleaned in 24 hours.
+2024-10-13 17:04:49 - IMPORTANT: System cleaning timer started. System will be cleaned in 24 hours.
+2024-10-13 17:06:04 - IMPORTANT: System cleaning timer started. System will be cleaned in 24 hours.
+2024-10-13 17:06:40 - IMPORTANT: System cleaning timer started. System will be cleaned in 24 hours.
+2024-10-13 17:07:43 - IMPORTANT: System cleaning timer started. System will be cleaned in 24 hours.
+2024-10-13 17:08:43 - IMPORTANT: System cleaning timer started. System will be cleaned in 24 hours.

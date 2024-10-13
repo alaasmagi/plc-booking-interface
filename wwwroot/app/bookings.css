@@ -71,6 +71,9 @@ html, body {
 .plc.date-selection {
     width: 5%;
 }
+.datetime-now {
+    margin-top:5%;
+}
 
 .plc-time-selection {
     width: 50%;
@@ -79,7 +82,6 @@ html, body {
 .plc-time-selection > b{
     padding-left: 20%;
 }
-
 .slider {
     width: 80%;
     margin-bottom: 0.5rem;
@@ -203,7 +205,6 @@ html, body {
     margin-bottom: 0.5em;
     background-color: var(--button-background);
     border-radius: 10px;
-    border: 5px solid var(--plc-available);
     font-weight: bold;
     font-size: large;
     transition: background-color 0.2s, border-color 0.2s;
