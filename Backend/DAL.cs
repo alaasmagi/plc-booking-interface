@@ -15,8 +15,7 @@ namespace plc_booking_interface.Backend
         public int ConvertDateToInt(DateTime dateTime)
         {
             DateTime epochStart = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-            DateTime utcDateTime = dateTime.ToUniversalTime();
-            int totalMinutes = (int)(utcDateTime - epochStart).TotalMinutes;
+            int totalMinutes = (int)(dateTime - epochStart).TotalMinutes;
 
             return totalMinutes;
         }

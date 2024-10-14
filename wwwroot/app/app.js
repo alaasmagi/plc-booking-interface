@@ -13,7 +13,7 @@ function updateTime() {
     const startHour = Math.floor(slider.value / 2); 
     const startMinutes = (slider.value % 2) * 30; 
 
-    const endValue = Math.min(Number(slider.value) + 1, 47); 
+    const endValue = Math.min(Number(slider.value) + 2, 47); 
     const endHour = Math.floor(endValue / 2);
     const endMinutes = (endValue % 2) * 30; 
 
@@ -22,16 +22,16 @@ function updateTime() {
     const formattedEndTime = `${String(endHour).padStart(2, '0')}:${String(endMinutes).padStart(2, '0')}`;
     selectedTimeStartDisplay.textContent = formattedStartTime;
     selectedTimeEndDisplay.textContent = formattedEndTime;
+    deleteRequest("/api/requests/booked_PLCs")
     fetchBookedPLCs();
 }
-
 
 function toggleDateTimeControls() {
     bookingDateSelectionCalender.disabled = dateTimeNowCheckbox.checked;
     timeRange.disabled = dateTimeNowCheckbox.checked;
 }
 
-dateTimeNowCheckbox.addEventListener("change", toggleDateTimeControls);
+dateTimeNowCheckbox.addEventListener("change", toggleDateTimeControls, fetchBookedPLCs);
 
 toggleDateTimeControls();
 
@@ -40,6 +40,7 @@ async function fetchBookedPLCs() {
     const selectedDateInput = document.getElementById("bookingDate").value;
     const startTimeInput = document.getElementById("selectedTimeStart").textContent;
     const endTimeInput = document.getElementById("selectedTimeEnd").textContent;
+
 
     const currentDate = new Date();
     const currentDateString = currentDate.toISOString().split("T")[0];
@@ -51,13 +52,8 @@ async function fetchBookedPLCs() {
     const startTime = startTimeInput || `${String(currentHour).padStart(2, '0')}:${formattedCurrentMinutes}`;
     const endTime = endTimeInput || startTime;
 
-    let adjustedStartTime = startTime === "24:00" ? "23:59" : startTime;
-    let adjustedEndTime = endTime === "24:00" ? "23:59" : endTime;
-
-    const finalDateTimeStart = `${selectedDate}T${adjustedStartTime}:00`;
-    const finalDateTimeEnd = `${selectedDate}T${adjustedEndTime}:00`;
-
-    console.log("Fetching booked PLCs for:", finalDateTimeStart, finalDateTimeEnd);
+    const finalDateTimeStart = `${selectedDate}T${startTime}:00`;
+    const finalDateTimeEnd = `${selectedDate}T${endTime}:00`;
 
     try {
         const response = await fetch(`/api/requests/booked_PLCs?dateTimeStart=${encodeURIComponent(finalDateTimeStart)}&dateTimeEnd=${encodeURIComponent(finalDateTimeEnd)}`);
@@ -67,8 +63,6 @@ async function fetchBookedPLCs() {
         }
 
         const bookedPLCs = await response.json();
-        console.log("Booked PLCs:", bookedPLCs);
-
         updatePLCStyles(bookedPLCs);
     } catch (error) {
         console.error('Error fetching booked PLCs:', error);
@@ -100,5 +94,25 @@ function updatePLCStyles(bookedPLCs) {
     }
 }
 
+async function deleteRequest(url) {
+    try {
+        const response = await fetch(url, {
+            method: 'DELETE', // Specifies the HTTP method
+            headers: {
+                'Content-Type': 'application/json' // Optional, depends on your server's needs
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to delete resource');
+        }
+
+        const data = await response.json();
+        console.log('Delete successful:', data);
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
 
 document.addEventListener("DOMContentLoaded", fetchBookedPLCs);
+document.addEventListener("", fetchBookedPLCs);

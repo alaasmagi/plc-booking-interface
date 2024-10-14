@@ -18,14 +18,19 @@ namespace plc_booking_interface.Controllers
         public DAL DataAccess = new DAL();
 
         [HttpGet("booked_PLCs")]
-        public IActionResult GetBookedPLCs([FromQuery] string dateTimeStart, [FromQuery] string dateTimeEnd)
+        public IActionResult GetBookedPLCs([FromQuery] DateTime dateTimeStart, [FromQuery] DateTime dateTimeEnd)
         {
-            int startDateTime = DataAccess.ConvertDateToInt(DateTime.Parse(dateTimeStart));
-            int endDateTime = DataAccess.ConvertDateToInt(DateTime.Parse(dateTimeEnd));
+            int startDateTime = DataAccess.ConvertDateToInt(dateTimeStart);
+            int endDateTime = DataAccess.ConvertDateToInt(dateTimeEnd);
             List<int> bookedPLCs = DataAccess.GetAllBookedPLCs(startDateTime, endDateTime);
-
-            Console.WriteLine("Käis läbi");
             return Ok(bookedPLCs);
+        }
+
+        [HttpDelete]
+        public IActionResult DeleteAllRequests()
+        {
+            _requests.Clear();
+            return Ok("All requests have been deleted successfully.");
         }
 
         // GET: api/requests

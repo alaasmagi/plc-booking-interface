@@ -71,7 +71,6 @@ namespace plc_booking_app.Backend
             SystemCleanTimer.Enabled = true;
             DataAccess.LogMessage("System cleaning timer started. System will be cleaned in 24 hours.", "IMPORTANT");
         }
-
         public static void StartRefreshTimer()
         {
             RefreshTimer = new System.Timers.Timer(60000);

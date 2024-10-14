@@ -22,7 +22,7 @@
                 <div class="plc-date-selection">
                     <div class="select-date">
                         <b for="bookingDate">Vali kuupäev:</b>
-                        <input class="date-selection" type="date" id="bookingDate" name="bookingDate">
+                        <input class="date-selection" type="date" id="bookingDate" name="bookingDate" value="">
                     </div>
                     <div class="datetime-now">
                         <b for="dateTimeNow">Praegune hetk: </b>
@@ -31,9 +31,9 @@
                 </div>
                 <div class="plc-time-selection">
                     <b>Vali kellaaeg:</b>
-                    <input type="range" min="0" max="47" value="0" class="slider" id="timeRange" oninput="updateTime()">
+                    <input type="range" min="0" max="45" value="0" class="slider" id="timeRange" oninput="updateTime()">
                     <br />
-                    <b><span id="selectedTimeStart">00:00</span> - <span id="selectedTimeEnd">00:30</span></b>
+                    <b><span id="selectedTimeStart">00:00</span> - <span id="selectedTimeEnd">01:00</span></b>
                 </div>
             </div>
             <div class="plc-container-main">
@@ -118,7 +118,7 @@
         <div class="info-container">
             <div class="plc-info-container">
                 <div class="plc-info-title">
-                    <h1>Kontrolleri info</h1>
+                    <h1>Kontrolleri info: </h1>
                 </div>
                 <div class="plc-info-main">
                     Vaba:
