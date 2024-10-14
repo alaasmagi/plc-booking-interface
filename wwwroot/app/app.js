@@ -112,5 +112,6 @@ toggleDateTimeControls();
 document.addEventListener("DOMContentLoaded", fetchBookedPLCs);
 bookingDateSelectionCalender.addEventListener("change", fetchBookedPLCs);
 timeRange.addEventListener('mouseup', fetchBookedPLCs);
+timeRange.addEventListener('touchend', fetchBookedPLCs);
 dateTimeNowCheckbox.addEventListener("change", toggleDateTimeControls, fetchBookedPLCs);
 
