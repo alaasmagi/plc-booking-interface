@@ -23,6 +23,11 @@ namespace plc_booking_interface.Controllers
             int startDateTime = DataAccess.ConvertDateToInt(dateTimeStart);
             int endDateTime = DataAccess.ConvertDateToInt(dateTimeEnd);
             List<int> bookedPLCs = DataAccess.GetAllBookedPLCs(startDateTime, endDateTime);
+            var debug1 = DataAccess.ConvertIntToDate(28816440);
+            var debug2 = DataAccess.ConvertIntToDate(28816560);
+
+            Console.WriteLine(debug1);
+            Console.WriteLine(debug2);
             return Ok(bookedPLCs);
         }
 
