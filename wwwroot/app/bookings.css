@@ -1,7 +1,9 @@
 ﻿:root {
     --color-light: #F2E5BF;
     --color-dark: #D9CEAB;
-    --button-background: #FD8B51;
+    --button-background: #D9CEAB;
+    --button-selected: #fd8b51;
+    --button-hover: #feb28b;
     --plc-available: #37A7BD;
     --plc-unavailable: #BD4D37;
 }
@@ -102,15 +104,17 @@ html, body {
 .plc-available-legend {
     width: 50px;
     height: 25px;
-    background-color: var(--plc-available);
-    border-radius:10px;
-    margin-right:2%;
+    background-color: var(--color-light);
+    border-radius: 10px;
+    border: 5px solid var(--plc-available);
+    margin-right: 2%;
 }
 .plc-unavailable-legend {
     width: 50px;
     height: 25px;
-    background-color: var(--plc-unavailable);
+    background-color: var(--color-light);
     border-radius: 10px;
+    border: 5px solid var(--plc-unavailable);
     margin-left: 10%;
     margin-right:2%;
 }
@@ -212,7 +216,7 @@ html, body {
 }
 
     .radio-label:hover {
-        background-color: #FDA273;
+        background-color: var(--button-hover);
     }
 
 .radio-input {
@@ -221,7 +225,7 @@ html, body {
 }
 
     .radio-input:checked + .radio-label {
-        background-color: #fc6417;
+        background-color: var(--button-selected);
     }
 
 .radio-input:checked {
@@ -238,29 +242,29 @@ html, body {
 }
 
 .button {
-    width:70%;
+    width: 70%;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 0.5em;
     margin-left: 40%;
     margin-bottom: 0.5em;
-    background-color: var(--button-background);
+    background-color: var(--button-selected);
     border-radius: 10px;
     font-weight: bold;
     font-size: large;
     text-align: center;
     cursor: pointer;
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.7);
-    border: none;
+    border:none;
 }
 
     .button:hover {
-        background-color: #FDA273;
+        background-color: var(--button-hover);
     }
 
     .button:active {
-        background-color: #fc6417;
+        background-color: var(--button-selected);
     }
 
 

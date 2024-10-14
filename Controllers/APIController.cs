@@ -6,6 +6,7 @@ using System.Linq;
 using plc_booking_app.Backend;
 using System.Text;
 using plc_booking_interface.Backend;
+using System.Timers;
 
 namespace plc_booking_interface.Controllers
 {
@@ -13,9 +14,10 @@ namespace plc_booking_interface.Controllers
     [Route("api/[controller]")]
     public class RequestsController : ControllerBase
     {
+        public static System.Timers.Timer RefreshTimer;
         private static List<(Guid Id, Request request)> _requests = new List<(Guid, Request)>();
         public BLL BusinessLogic = new BLL();
-        public DAL DataAccess = new DAL();
+        public static DAL DataAccess = new DAL();
 
         [HttpGet("booked_PLCs")]
         public IActionResult GetBookedPLCs([FromQuery] DateTime dateTimeStart, [FromQuery] DateTime dateTimeEnd)
@@ -23,11 +25,8 @@ namespace plc_booking_interface.Controllers
             int startDateTime = DataAccess.ConvertDateToInt(dateTimeStart);
             int endDateTime = DataAccess.ConvertDateToInt(dateTimeEnd);
             List<int> bookedPLCs = DataAccess.GetAllBookedPLCs(startDateTime, endDateTime);
-            var debug1 = DataAccess.ConvertIntToDate(28818000);
-            var debug2 = DataAccess.ConvertIntToDate(28818060);
 
-            Console.WriteLine(debug1);
-            Console.WriteLine(debug2);
+            Console.WriteLine("Käis läbi");
             return Ok(bookedPLCs);
         }
 
@@ -35,6 +34,7 @@ namespace plc_booking_interface.Controllers
         public IActionResult DeleteAllRequests()
         {
             _requests.Clear();
+            Console.WriteLine("Timm");
             return Ok("All requests have been deleted successfully.");
         }
 
@@ -101,6 +101,18 @@ namespace plc_booking_interface.Controllers
             DataAccess.LogMessage("POST request received successfully.", "IMPORTANT");
             BusinessLogic.CheckRequestData(request);
             return CreatedAtAction(nameof(GetRequest), new { id }, request);
+        }
+
+        public static void StartRefreshTimer()
+        {
+            RefreshTimer = new System.Timers.Timer(60000);
+            RefreshTimer.Elapsed += RefreshElapseEvent;
+            RefreshTimer.AutoReset = true;
+            RefreshTimer.Enabled = true;
+        }
+        private static void RefreshElapseEvent(Object source, ElapsedEventArgs e)
+        {
+            _requests.Clear();
         }
 
     }

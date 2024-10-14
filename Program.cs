@@ -2,6 +2,7 @@ using Microsoft.Extensions.FileProviders;
 using System.IO;
 using System.Runtime.CompilerServices;
 using plc_booking_app.Backend;
+using plc_booking_interface.Controllers;
 
 var builder = WebApplication.CreateBuilder(new WebApplicationOptions
 {
@@ -36,6 +37,6 @@ app.UseAuthorization();
 app.MapControllers();
 
 BLL.StartSystemCleanTimer();
-//BLL.StartRefreshTimer();
+RequestsController.StartRefreshTimer();
 
 app.Run();

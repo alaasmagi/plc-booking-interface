@@ -22,7 +22,6 @@ namespace plc_booking_app.Backend
     {
         public static DAL DataAccess = new DAL();
         public static System.Timers.Timer SystemCleanTimer;
-        public static System.Timers.Timer RefreshTimer;
 
         public bool IsAuthorized(HttpRequest request)
         {
@@ -71,22 +70,10 @@ namespace plc_booking_app.Backend
             SystemCleanTimer.Enabled = true;
             DataAccess.LogMessage("System cleaning timer started. System will be cleaned in 24 hours.", "IMPORTANT");
         }
-        public static void StartRefreshTimer()
-        {
-            RefreshTimer = new System.Timers.Timer(60000);
-            RefreshTimer.Elapsed += RefreshElapseEvent;
-            RefreshTimer.AutoReset = true;
-            RefreshTimer.Enabled = true;
-        }
-
         private static void SystemCleanElapseEvent(Object source, ElapsedEventArgs e)
         {
             DataAccess.SystemClean();
         }        
         
-        private static void RefreshElapseEvent(Object source, ElapsedEventArgs e)
-        {
-
-        }
     }
 }

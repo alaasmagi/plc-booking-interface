@@ -6,14 +6,13 @@ const bookingDateSelectionCalender = document.getElementById("bookingDate");
 const timeRange = document.getElementById("timeRange");
 
 function updateTime() {
-    const slider = document.getElementById("timeRange");
     const selectedTimeStartDisplay = document.getElementById("selectedTimeStart");
     const selectedTimeEndDisplay = document.getElementById("selectedTimeEnd");
 
-    const startHour = Math.floor(slider.value / 2); 
-    const startMinutes = (slider.value % 2) * 30; 
+    const startHour = Math.floor(timeRange.value / 2); 
+    const startMinutes = (timeRange.value % 2) * 30; 
 
-    const endValue = Math.min(Number(slider.value) + 2, 47); 
+    const endValue = Math.min(Number(timeRange.value) + 2, 47); 
     const endHour = Math.floor(endValue / 2);
     const endMinutes = (endValue % 2) * 30; 
 
@@ -22,8 +21,6 @@ function updateTime() {
     const formattedEndTime = `${String(endHour).padStart(2, '0')}:${String(endMinutes).padStart(2, '0')}`;
     selectedTimeStartDisplay.textContent = formattedStartTime;
     selectedTimeEndDisplay.textContent = formattedEndTime;
-    deleteRequest("/api/requests/booked_PLCs")
-    fetchBookedPLCs();
 }
 
 function toggleDateTimeControls() {
@@ -31,12 +28,8 @@ function toggleDateTimeControls() {
     timeRange.disabled = dateTimeNowCheckbox.checked;
 }
 
-dateTimeNowCheckbox.addEventListener("change", toggleDateTimeControls, fetchBookedPLCs);
-
-toggleDateTimeControls();
-
-
 async function fetchBookedPLCs() {
+    deleteRequests;
     const selectedDateInput = document.getElementById("bookingDate").value;
     const startTimeInput = document.getElementById("selectedTimeStart").textContent;
     const endTimeInput = document.getElementById("selectedTimeEnd").textContent;
@@ -94,12 +87,13 @@ function updatePLCStyles(bookedPLCs) {
     }
 }
 
-async function deleteRequest(url) {
+async function deleteRequests() {
+    let url = "/api/requests/booked_PLCs";
     try {
         const response = await fetch(url, {
-            method: 'DELETE', // Specifies the HTTP method
+            method: 'DELETE', 
             headers: {
-                'Content-Type': 'application/json' // Optional, depends on your server's needs
+                'Content-Type': 'application/json'
             }
         });
 
@@ -114,5 +108,9 @@ async function deleteRequest(url) {
     }
 }
 
+toggleDateTimeControls();
 document.addEventListener("DOMContentLoaded", fetchBookedPLCs);
-document.addEventListener("", fetchBookedPLCs);
+bookingDateSelectionCalender.addEventListener("change", fetchBookedPLCs);
+timeRange.addEventListener('mouseup', fetchBookedPLCs);
+dateTimeNowCheckbox.addEventListener("change", toggleDateTimeControls, fetchBookedPLCs);
+
