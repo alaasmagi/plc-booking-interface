@@ -297,6 +297,9 @@ html, body {
         margin-top:5%;
         width:100%;
     }
+    .slider {
+        transform:scale(1.2);
+    }
         .plc-time-selection > b {
             padding-left: 30%;
         }

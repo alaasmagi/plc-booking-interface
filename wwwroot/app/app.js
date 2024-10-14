@@ -13,7 +13,7 @@ function updateTime() {
     const startHour = Math.floor(slider.value / 2); 
     const startMinutes = (slider.value % 2) * 30; 
 
-    const endValue = Math.min(Number(slider.value) + 1, 48); 
+    const endValue = Math.min(Number(slider.value) + 1, 47); 
     const endHour = Math.floor(endValue / 2);
     const endMinutes = (endValue % 2) * 30; 
 
