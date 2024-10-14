@@ -43,7 +43,7 @@ namespace plc_booking_interface.Backend
                 try
                 {
                     connection.Open();
-                    string query = "SELECT plc_id FROM UL_PLC_BOOKINGS WHERE start BETWEEN @dateTimeStart AND @dateTimeEnd AND end BETWEEN @dateTimeStart AND @dateTimeEnd;";
+                    string query = "SELECT plc_id FROM UL_PLC_BOOKINGS WHERE (@dateTimeStart BETWEEN start AND end) OR (@dateTimeEnd BETWEEN start AND end);";
                     using (SqliteCommand command = new SqliteCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@dateTimeStart", startTime);
@@ -64,7 +64,6 @@ namespace plc_booking_interface.Backend
                 }
             }
             return PLCs;
-
         }
 
         public string GetPLCName(int plcId)
