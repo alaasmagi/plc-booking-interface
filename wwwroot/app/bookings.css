@@ -285,8 +285,27 @@ html, body {
     .plc-container {
         width: 100%;
     }
-    .plc-container-main {
+    .plc-container-header {
+        flex-direction: column;
+        margin-bottom:5%;
+    }
+    .datetime-now {
+        margin-top: 5%;
+    }
+
+    .plc-time-selection {
         margin-top:5%;
+        width:100%;
+    }
+        .plc-time-selection > b {
+            padding-left: 30%;
+        }
+    .date-selection {
+        width:100%;
+        text-align:center;
+    }
+    .plc-container-main {
+        margin-top: 5%;
         margin-bottom: 10%;
     }
     .radio-group {
@@ -296,7 +315,6 @@ html, body {
         transform:scale(1.4);
     }
     .plc-container-legend {
-
         margin-bottom:8%;
     }
     .info-container {

@@ -51,25 +51,16 @@ async function fetchBookedPLCs() {
     const startTime = startTimeInput || `${String(currentHour).padStart(2, '0')}:${formattedCurrentMinutes}`;
     const endTime = endTimeInput || startTime;
 
-    let adjustedEndTime = endTime;
-    let finalDateTimeEnd;
+    let adjustedStartTime = startTime === "24:00" ? "23:59" : startTime;
+    let adjustedEndTime = endTime === "24:00" ? "23:59" : endTime;
 
-    if (endTime === "24:00") {
-        adjustedEndTime = "00:00";
-        const nextDay = new Date(selectedDate); 
-        nextDay.setDate(nextDay.getDate() + 1); 
-        const nextDayString = nextDay.toISOString().split("T")[0]; 
-        finalDateTimeEnd = `${nextDayString}T${adjustedEndTime}:00`;
-    } else {
-        finalDateTimeEnd = `${selectedDate}T${adjustedEndTime}:00`; 
-    }
+    const finalDateTimeStart = `${selectedDate}T${adjustedStartTime}:00`;
+    const finalDateTimeEnd = `${selectedDate}T${adjustedEndTime}:00`;
 
-    const dateTimeStart = `${selectedDate}T${startTime}:00`;
-
-    console.log("Fetching booked PLCs for:", dateTimeStart, finalDateTimeEnd);
+    console.log("Fetching booked PLCs for:", finalDateTimeStart, finalDateTimeEnd);
 
     try {
-        const response = await fetch(`/api/requests/booked_PLCs?dateTimeStart=${encodeURIComponent(dateTimeStart)}&dateTimeEnd=${encodeURIComponent(finalDateTimeEnd)}`);
+        const response = await fetch(`/api/requests/booked_PLCs?dateTimeStart=${encodeURIComponent(finalDateTimeStart)}&dateTimeEnd=${encodeURIComponent(finalDateTimeEnd)}`);
 
         if (!response.ok) {
             throw new Error('Failed to fetch booked PLCs');
@@ -83,6 +74,7 @@ async function fetchBookedPLCs() {
         console.error('Error fetching booked PLCs:', error);
     }
 }
+
 
 
 
