@@ -29,20 +29,26 @@ namespace plc_booking_interface.Backend
             return dateTime;
         }
 
-        public List<int> GetAllBookedPLCs()
+        public List<int> GetAllBookedPLCs(int startTime, int endTime)
         {
             List<int> PLCs = new List<int>();
 
-            int dateTimeNow = ConvertDateToInt(DateTime.Now);
+            if (startTime == 0 || endTime == 0)
+            {
+                startTime = ConvertDateToInt(DateTime.Now);
+                endTime = startTime;
+            }
+
             using (SqliteConnection connection = new SqliteConnection(databaseConnection))
             {
                 try
                 {
                     connection.Open();
-                    string query = "SELECT plc_id FROM UL_PLC_BOOKINGS WHERE @dateTimeNow IS BETWEEN start AND end;";
+                    string query = "SELECT plc_id FROM UL_PLC_BOOKINGS WHERE start BETWEEN @dateTimeStart AND @dateTimeEnd OR end BETWEEN @dateTimeStart AND @dateTimeEnd;";
                     using (SqliteCommand command = new SqliteCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@dateTimeNow", dateTimeNow);
+                        command.Parameters.AddWithValue("@dateTimeStart", startTime);
+                        command.Parameters.AddWithValue("@dateTimeEnd", endTime);
                         using (SqliteDataReader reader = command.ExecuteReader())
                         {
                             while (reader.Read())

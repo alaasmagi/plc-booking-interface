@@ -2,146 +2,140 @@
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8" name="viewport" content="width=device width"/>
     <title>Bookings</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link href="../app/bookings.css" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <div class="header-logo">
-            <img src="https://2023.egovconference.ee/wp-content/uploads/2023/04/logo-taltech-1.png" width="200px" height="112px" />
+    <div class="page-header">
+        <div class="page-logo">
+            <img src="https://2023.egovconference.ee/wp-content/uploads/2023/04/logo-taltech-1.png" />
         </div>
-        <div class="header-title">
+        <div class="page-title">
             <h1>Unitronics kontrollerite broneerimine</h1>
         </div>
-    </header>
-    <div class="plc-page"
+    </div>
+    <div class="page-main">
         <div class="plc-container">
-            <div class="plc-page-header">
-                <div class="date-selection-container">
-                    <div class="date-selection">
+            <div class="plc-container-header">
+                <div class="plc-date-selection">
+                    <div class="select-date">
                         <b for="bookingDate">Vali kuupäev:</b>
-                        <input type="date" id="bookingDate" name="bookingDate">
+                        <input class="date-selection" type="date" id="bookingDate" name="bookingDate">
+                    </div>
+                    <div class="datetime-now">
+                        <b for="dateTimeNow">Praegune hetk: </b>
+                        <input type="checkbox" name="dateTimeNow" id="dateTimeNow" checked />
                     </div>
                 </div>
-                <div class="time-selection-container">
-                    <div class="time-selection">
-                        <input type="range" min="0" max="24" value="0" class="slider" id="myRange">
-                        <br />
-                        <b>Valitud kellaaeg: value</b>
-                    </div>
+                <div class="plc-time-selection">
+                    <b>Vali kellaaeg:</b>
+                    <input type="range" min="0" max="47" value="0" class="slider" id="timeRange" oninput="updateTime()">
+                    <br />
+                    <b><span id="selectedTimeStart">00:00</span> - <span id="selectedTimeEnd">00:30</span></b>
                 </div>
             </div>
-            <div class="controllers-menu">
+            <div class="plc-container-main">
                 <div class="radio-group">
                     <div class="controller-row">
                         <input class="radio-input" name="radio-group" id="1001" type="radio" checked>
                         <label class="radio-label" for="1001">
-                            <span class="radio-inner-circle"></span>
                             PLC-1
                         </label>
 
                         <input class="radio-input" name="radio-group" id="1002" type="radio">
                         <label class="radio-label" for="1002">
-                            <span class="radio-inner-circle"></span>
                             PLC-2
                         </label>
 
                         <input class="radio-input" name="radio-group" id="1003" type="radio">
                         <label class="radio-label" for="1003">
-                            <span class="radio-inner-circle"></span>
                             PLC-3
                         </label>
 
                         <input class="radio-input" name="radio-group" id="1004" type="radio">
                         <label class="radio-label" for="1004">
-                            <span class="radio-inner-circle"></span>
                             PLC-4
                         </label>
                     </div>
                     <div class="controller-row">
                         <input class="radio-input" name="radio-group" id="1005" type="radio">
                         <label class="radio-label" for="1005">
-                            <span class="radio-inner-circle"></span>
                             PLC-5
                         </label>
 
                         <input class="radio-input" name="radio-group" id="1006" type="radio">
                         <label class="radio-label" for="1006">
-                            <span class="radio-inner-circle"></span>
                             PLC-6
                         </label>
 
                         <input class="radio-input" name="radio-group" id="1007" type="radio">
                         <label class="radio-label" for="1007">
-                            <span class="radio-inner-circle"></span>
                             PLC-7
                         </label>
 
                         <input class="radio-input" name="radio-group" id="1008" type="radio">
                         <label class="radio-label" for="1008">
-                            <span class="radio-inner-circle"></span>
                             PLC-8
                         </label>
                     </div>
                     <div class="controller-row">
                         <input class="radio-input" name="radio-group" id="1009" type="radio">
                         <label class="radio-label" for="1009">
-                            <span class="radio-inner-circle"></span>
                             PLC-9
                         </label>
 
                         <input class="radio-input" name="radio-group" id="1010" type="radio">
                         <label class="radio-label" for="1010">
-                            <span class="radio-inner-circle"></span>
+
                             PLC-10
                         </label>
 
                         <input class="radio-input" name="radio-group" id="1011" type="radio">
                         <label class="radio-label" for="1011">
-                            <span class="radio-inner-circle"></span>
                             PLC-11
                         </label>
 
                         <input class="radio-input" name="radio-group" id="1012" type="radio">
                         <label class="radio-label" for="1012">
-                            <span class="radio-inner-circle"></span>
                             PLC-12
                         </label>
                     </div>
                     <div class="controller-row">
                         <input class="radio-input" name="radio-group" id="1013" type="radio">
                         <label class="radio-label" for="1013">
-                            <span class="radio-inner-circle"></span>
                             PLC-13
                         </label>
                     </div>
                 </div>
             </div>
-            <div class="plc-page-legend">
-                - vaba | - hõivatud
+            <div class="plc-container-legend">
+                <div class="plc-available-legend"></div> - vaba
+                <div class="plc-unavailable-legend"></div> - hõivatud
             </div>
         </div>
-            <div class="info-panel-container">
-                <div class="plc-info-panel">
-                    <div class="info-panel-title">
-                        <h3>Kontrolleri info:</h3>
-                    </div>
-                    <div class="info-panel-data">
-                        Vaba:
-                        <br />
-                        Hõivatud:
-                        <br />
-                    </div>
-                    <div class="plc-booking-link">
-                        <button class="button">Broneeri</button>
-                    </div>
+        <div class="info-container">
+            <div class="plc-info-container">
+                <div class="plc-info-title">
+                    <h1>Kontrolleri info</h1>
                 </div>
-                <div class="development-data">
-                    <a href="">Project repo</a> |
-                    <a href="">Developer</a>
+                <div class="plc-info-main">
+                    Vaba:
+                    <br />
+                    Hõivatud:
+                    <br />
+                </div>
+                <div class="plc-info-button">
+                    <button class="button" onclick="window.location.href='https://outlook.office365.com/owa/calendar/ICT356UnitronicsPLCBroneerimine@taltech.ee/bookings/';">Broneeri</button>
                 </div>
             </div>
+            <div class="dev-info-container">
+                <a href="https://github.com/alaasmagi/plc-booking-interface">Project repo</a>
+                <a href="https://www.linkedin.com/in/alaasmagi/"> Developer</a>
+            </div>
+        </div>
+    </div>
+    <script src="/app/app.js"></script>
 </body>
 </html>
