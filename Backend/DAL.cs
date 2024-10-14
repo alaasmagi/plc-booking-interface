@@ -43,7 +43,7 @@ namespace plc_booking_interface.Backend
                 try
                 {
                     connection.Open();
-                    string query = "SELECT plc_id FROM UL_PLC_BOOKINGS WHERE (@dateTimeStart BETWEEN start AND end) AND (@dateTimeEnd BETWEEN start AND end);";
+                    string query = "SELECT plc_id FROM UL_PLC_BOOKINGS WHERE (@dateTimeStart BETWEEN start - 30 AND start + 30 ) AND (@dateTimeEnd BETWEEN end - 30 AND end + 30);";
                     using (SqliteCommand command = new SqliteCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@dateTimeStart", startTime);
