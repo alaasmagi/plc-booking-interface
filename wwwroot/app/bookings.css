@@ -162,6 +162,18 @@ html, body {
     align-items: center;
 }
 
+.plc-available-info{
+    height:50%;
+}
+
+.plc-unavailable-info{
+    height:50%;
+}
+
+.plc-available-info, .plc-unavailable-info > b {
+    text-decoration:underline;
+}
+
 .dev-info-container {
     width: 100%;
     height: 5%;
@@ -335,6 +347,12 @@ html, body {
     .plc-info-container {
         height: 100%;
         padding: 5%;
+    }
+    .plc-available-info{
+        width:50
+    }
+    .plc-unavailable-info{
+        width:50%;
     }
     .dev-info-container {
         margin-bottom: 3%;

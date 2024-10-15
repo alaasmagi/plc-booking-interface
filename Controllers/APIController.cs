@@ -26,8 +26,14 @@ namespace plc_booking_interface.Controllers
             int endDateTime = DataAccess.ConvertDateToInt(dateTimeEnd);
             List<int> bookedPLCs = DataAccess.GetAllBookedPLCs(startDateTime, endDateTime);
 
-            Console.WriteLine("Käis läbi");
             return Ok(bookedPLCs);
+        }
+
+        [HttpGet("PLC_unavailable")]
+        public IActionResult GetUnavailableTimeSlots(int plcId)
+        {
+            List<DateTime> unavailableTimeslots;
+            return Ok(unavailableTimeslots);
         }
 
         [HttpDelete]
