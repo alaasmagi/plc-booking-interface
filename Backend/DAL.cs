@@ -2,6 +2,7 @@
 using plc_booking_app.Backend;
 using plc_booking_interface.Model;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 namespace plc_booking_interface.Backend
 {
@@ -43,7 +44,8 @@ namespace plc_booking_interface.Backend
                 try
                 {
                     connection.Open();
-                    string query = "SELECT plc_id FROM UL_PLC_BOOKINGS WHERE (@dateTimeStart BETWEEN start - 30 AND start + 30 ) AND (@dateTimeEnd BETWEEN end - 30 AND end + 30);";
+                    string query = "SELECT plc_id FROM UL_PLC_BOOKINGS WHERE (@dateTimeStart BETWEEN start - 30 AND start + 30 ) " +
+                                    "AND (@dateTimeEnd BETWEEN end - 30 AND end + 30);";
                     using (SqliteCommand command = new SqliteCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@dateTimeStart", startTime);
@@ -57,6 +59,7 @@ namespace plc_booking_interface.Backend
                             }
                         }
                     }
+                    connection.Close();
                 }
                 catch (Exception ex)
                 {
@@ -145,6 +148,7 @@ namespace plc_booking_interface.Backend
                             exists = true;
                         }
                     }
+                    connection.Close();
                 }
                 catch (Exception ex)
                 {
@@ -172,7 +176,8 @@ namespace plc_booking_interface.Backend
                 try
                 {
                     connection.Open();
-                    string query = "INSERT INTO UL_PLC_BOOKINGS (plc_id, booking_id, start, end) VALUES (@plcId, @bookingId, @startTimestamp, @endTimestamp);";
+                    string query = "INSERT INTO UL_PLC_BOOKINGS (plc_id, booking_id, start, end) " +
+                                    "VALUES (@plcId, @bookingId, @startTimestamp, @endTimestamp);";
                     using (SqliteCommand command = new SqliteCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@plcId", plcId);
@@ -234,10 +239,45 @@ namespace plc_booking_interface.Backend
             }
         }
 
+        public List<Tuple<DateTime, DateTime>> GetPLCBookings(int plcId)
+        {
+            List<Tuple<DateTime, DateTime>> PLCbookings = new List<Tuple<DateTime, DateTime>>();
+
+            using (SqliteConnection connection = new SqliteConnection(databaseConnection))
+            {
+                try
+                {
+                    connection.Open();
+                    string query = "SELECT start, end FROM UL_PLC_BOOKINGS WHERE plc_id = @plcId;";
+                    using (SqliteCommand command = new SqliteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@plcId", plcId);
+                        using (SqliteDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                PLCbookings.Add(Tuple.Create(ConvertIntToDate(reader.GetInt32(0)), ConvertIntToDate(reader.GetInt32(1))));
+                                
+                            }
+                        }
+                        connection.Close();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    LogMessage($"GetAllBookedPLCs() operation unsuccessful. {ex}", "ERROR");
+                }
+            }
+
+
+            return PLCbookings;
+        }
+
+
         public void SystemClean()
         {
             if (File.Exists(logFilePath))
-            {
+            { 
                 File.Delete(logFilePath);
                 Console.WriteLine($"Log file '{logFilePath}' deleted at {DateTime.Now}");
             }

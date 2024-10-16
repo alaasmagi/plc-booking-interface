@@ -29,11 +29,17 @@ namespace plc_booking_interface.Controllers
             return Ok(bookedPLCs);
         }
 
-        [HttpGet("PLC_unavailable")]
+        [HttpGet("PLC_bookings")]
         public IActionResult GetUnavailableTimeSlots(int plcId)
         {
-            List<DateTime> unavailableTimeslots;
-            return Ok(unavailableTimeslots);
+            List<Tuple<DateTime, DateTime>> plcBookings = DataAccess.GetPLCBookings(plcId);
+            var plcBookingsJson = plcBookings.Select(booking => new
+            {
+                start = booking.Item1,
+                end = booking.Item2
+            }).ToList();
+
+            return Ok(plcBookingsJson);
         }
 
         [HttpDelete]
