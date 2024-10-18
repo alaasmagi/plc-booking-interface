@@ -1,51 +1,36 @@
-﻿const dateTimeNowCheckbox = document.getElementById("dateTimeNow");
-const bookingDateSelectionCalender = document.getElementById("bookingDate");
+﻿"use strict";
+
 const timeRange = document.getElementById("timeRange");
 const plcUnavailableText = document.getElementById("plc-unavailable-text");
 const plcAvailableText = document.getElementById("plc-available-text");
+const selectedTimeStartDisplay = document.getElementById("selectedTimeStart");
+const selectedTimeEndDisplay = document.getElementById("selectedTimeEnd");
 
 function updateTime() {
-    const selectedTimeStartDisplay = document.getElementById("selectedTimeStart");
-    const selectedTimeEndDisplay = document.getElementById("selectedTimeEnd");
+    const startHour = Math.floor(timeRange.value / 2);
+    const startMinutes = (timeRange.value % 2) * 30;
 
-    const startHour = Math.floor(timeRange.value / 2); 
-    const startMinutes = (timeRange.value % 2) * 30; 
-
-    const endValue = Math.min(Number(timeRange.value) + 2, 47); 
+    const endValue = Math.min(Number(timeRange.value) + 2, 47);
     const endHour = Math.floor(endValue / 2);
-    const endMinutes = (endValue % 2) * 30; 
+    const endMinutes = (endValue % 2) * 30;
 
     const formattedStartTime = `${String(startHour).padStart(2, '0')}:${String(startMinutes).padStart(2, '0')}`;
-
     const formattedEndTime = `${String(endHour).padStart(2, '0')}:${String(endMinutes).padStart(2, '0')}`;
+
     selectedTimeStartDisplay.textContent = formattedStartTime;
     selectedTimeEndDisplay.textContent = formattedEndTime;
 }
 
-function toggleDateTimeControls() {
-    bookingDateSelectionCalender.disabled = dateTimeNowCheckbox.checked;
-    timeRange.disabled = dateTimeNowCheckbox.checked;
-}
-
 async function fetchBookedPLCs() {
-    deleteRequests;
-    const selectedDateInput = document.getElementById("bookingDate").value;
+    deleteRequests();
     const startTimeInput = document.getElementById("selectedTimeStart").textContent;
     const endTimeInput = document.getElementById("selectedTimeEnd").textContent;
 
-
     const currentDate = new Date();
     const currentDateString = currentDate.toISOString().split("T")[0];
-    const currentHour = currentDate.getHours();
-    const currentMinutes = Math.floor(currentDate.getMinutes() / 30) * 30;
-    const formattedCurrentMinutes = currentMinutes === 60 ? '00' : String(currentMinutes).padStart(2, '0');
 
-    const selectedDate = selectedDateInput || currentDateString;
-    const startTime = startTimeInput || `${String(currentHour).padStart(2, '0')}:${formattedCurrentMinutes}`;
-    const endTime = endTimeInput || startTime;
-
-    const finalDateTimeStart = `${selectedDate}T${startTime}:00`;
-    const finalDateTimeEnd = `${selectedDate}T${endTime}:00`;
+    const finalDateTimeStart = `${currentDateString}T${startTimeInput}:00`;
+    const finalDateTimeEnd = `${currentDateString}T${endTimeInput}:00`;
 
     try {
         const response = await fetch(`/api/requests/booked_PLCs?dateTimeStart=${encodeURIComponent(finalDateTimeStart)}&dateTimeEnd=${encodeURIComponent(finalDateTimeEnd)}`);
@@ -67,7 +52,7 @@ function updatePLCStyles(bookedPLCs) {
     if (bookedPLCs.length === 0) {
         radioButtons.forEach(radio => {
             const radioLabel = radio.nextElementSibling;
-            radioLabel.style.border = '5px solid #37A7BD'; 
+            radioLabel.style.border = '5px solid #37A7BD';
         });
     } else {
         radioButtons.forEach(radio => {
@@ -75,7 +60,7 @@ function updatePLCStyles(bookedPLCs) {
             if (bookedPLCs.includes(parseInt(radio.id))) {
                 radioLabel.style.border = '5px solid #BD4D37';
             } else {
-                radioLabel.style.border = '5px solid #37A7BD'; 
+                radioLabel.style.border = '5px solid #37A7BD';
             }
         });
     }
@@ -85,7 +70,7 @@ async function deleteRequests() {
     let url = "/api/requests/booked_PLCs";
     try {
         const response = await fetch(url, {
-            method: 'DELETE', 
+            method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -101,12 +86,18 @@ async function deleteRequests() {
         console.error('Error:', error);
     }
 }
-document.addEventListener("DOMContentLoaded", initPLCBookingDisplay);
 
-document.addEventListener("DOMContentLoaded", fetchBookedPLCs);
-bookingDateSelectionCalender.addEventListener("change", fetchBookedPLCs);
-timeRange.addEventListener('mouseup', fetchBookedPLCs);
-timeRange.addEventListener('touchend', fetchBookedPLCs);
+document.addEventListener("DOMContentLoaded", () => {
+    setupRadioButtons();
+    initializeSlider();
+    fetchBookedPLCs();
+});
+
+timeRange.addEventListener('mouseup', handleSliderChange);
+timeRange.addEventListener('touchend', handleSliderChange);
+
+document.addEventListener("")
+
 function setupRadioButtons() {
     const plcRadioButtons = document.querySelectorAll('input[name="plcRadio"]');
 
@@ -118,13 +109,19 @@ function setupRadioButtons() {
     });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    setupRadioButtons();
+function initializeSlider() {
+    const currentDate = new Date();
+    const currentHour = currentDate.getHours();
+    const currentMinutes = currentDate.getMinutes();
 
-    const selectedRadioButton = document.querySelector('input[name="plcRadio"]:checked');
-    if (selectedRadioButton) {
-        initPLCBookingDisplay(selectedRadioButton.value);
-    }
-});
+    const sliderValue = (currentHour * 2) + Math.floor(currentMinutes / 30);
 
+    timeRange.value = Math.min(Math.max(sliderValue, 0), 47);
 
+    updateTime();
+}
+
+function handleSliderChange() {
+    updateTime();
+    fetchBookedPLCs();
+}
