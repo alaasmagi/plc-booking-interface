@@ -5,6 +5,7 @@ const plcUnavailableText = document.getElementById("plc-unavailable-text");
 const plcAvailableText = document.getElementById("plc-available-text");
 const selectedTimeStartDisplay = document.getElementById("selectedTimeStart");
 const selectedTimeEndDisplay = document.getElementById("selectedTimeEnd");
+const displayDate = document.getElementById("dateValue");
 
 function updateTime() {
     const startHour = Math.floor(timeRange.value / 2);
@@ -25,7 +26,6 @@ async function fetchBookedPLCs() {
     deleteRequests();
     const startTimeInput = document.getElementById("selectedTimeStart").textContent;
     const endTimeInput = document.getElementById("selectedTimeEnd").textContent;
-
     const currentDate = new Date();
     const currentDateString = currentDate.toISOString().split("T")[0];
 
@@ -113,6 +113,15 @@ function initializeSlider() {
     const currentDate = new Date();
     const currentHour = currentDate.getHours();
     const currentMinutes = currentDate.getMinutes();
+    
+
+
+    const formattedDate = new Intl.DateTimeFormat('en-GB', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric'
+    }).format(currentDate);
+    displayDate.textContent = formattedDate;
 
     const sliderValue = (currentHour * 2) + Math.floor(currentMinutes / 30);
 
