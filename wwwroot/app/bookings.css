@@ -198,83 +198,34 @@ html, body {
     /*Mobile version*/
 @media (max-width: 2000px) and (min-height: 1500px){
     * {
-        font-size:26px;
+        font-size:28px;
     }
     html, body  {
         flex-direction:column;
     }
     .page-header {
-        padding-top:3%;
-        height:50%;
         width:100%;
+        height:35%;
     }
     .page-main {
-        width: 100%;
-        flex-direction: column;
-        height:200%;
+        width:100%;
     }
-    .plc-container-main{
-        height:50%;
-    }
-    .plc-container {
-        width: 100%;
-        height:100%;
-    }
-    .plc-container-header {
-        flex-direction: column;
-        margin-bottom:5%;
-    }
-    .datetime-now {
-        margin-top: 5%;
+    .controller-row {
+        justify-content:space-evenly;
     }
 
-    .plc-time-selection {
-        margin-top:5%;
-        width:100%;
-    }
-    .slider {
-        transform:scale(1.2);
-    }
-        .plc-time-selection > b {
-            padding-left: 30%;
-        }
-    .date-selection {
-        width:100%;
-        text-align:center;
-    }
-    .plc-container-main {
-        margin-top: 5%;
-        margin-bottom: 10%;
-    }
-    .radio-group {
-        height:90%;    
-    }
-    .radio-label {
-        transform:scale(1.4);
-    }
-    .plc-container-legend {
-        margin-bottom:8%;
-    }
-    .info-container {
-        width: 100%;
-        height: 50%;
-    }
-    .plc-info-container {
-        height: 100%;
-        padding: 5%;
-    }
-    .plc-available-info {
-        width: 100%;
-        overflow:hidden;
-        overflow-y: auto;
-    }
-    .plc-unavailable-info {
-        width: 100%;
-        overflow: hidden;
-        overflow-y: scroll;
-    }
     .dev-info-container {
-        margin-bottom: 3%;
+        width: 100%;
+        text-align: right;
+        bottom: 0;
+        right: 0;
+        position: absolute;
     }
-    
+
+    .plc-time-selection > b {
+        font-size: 28px;
+    }
+    .plc-label {
+        font-size: 28px;
+    }
 }
