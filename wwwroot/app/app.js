@@ -47,20 +47,19 @@ async function fetchBookedPLCs() {
 }
 
 function updatePLCStyles(bookedPLCs) {
-    const radioButtons = document.querySelectorAll('.radio-input');
+    const PLCentities = document.querySelectorAll('.plc-label');
 
     if (bookedPLCs.length === 0) {
-        radioButtons.forEach(radio => {
-            const radioLabel = radio.nextElementSibling;
-            radioLabel.style.border = '5px solid #37A7BD';
+        PLCentities.forEach(label => {
+            label.style.border = '6px solid #37A7BD';
         });
     } else {
-        radioButtons.forEach(radio => {
-            const radioLabel = radio.nextElementSibling;
-            if (bookedPLCs.includes(parseInt(radio.id))) {
-                radioLabel.style.border = '5px solid #BD4D37';
+        PLCentities.forEach(label => {
+            const plcId = parseInt(label.getAttribute('id')); 
+            if (bookedPLCs.includes(plcId)) {
+                label.style.border = '6px solid #BD4D37';
             } else {
-                radioLabel.style.border = '5px solid #37A7BD';
+                label.style.border = '6px solid #37A7BD';
             }
         });
     }
