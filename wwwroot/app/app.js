@@ -23,23 +23,23 @@ function updateTime() {
 }
 
 async function fetchBookedPLCs() {
-    deleteRequests();
     const startTimeInput = document.getElementById("selectedTimeStart").textContent;
     const endTimeInput = document.getElementById("selectedTimeEnd").textContent;
     const currentDate = new Date();
-    const currentDateString = currentDate.toISOString().split("T")[0];
-
+    const currentDateString = currentDate.toLocaleDateString('en-CA');
     const finalDateTimeStart = `${currentDateString}T${startTimeInput}:00`;
     const finalDateTimeEnd = `${currentDateString}T${endTimeInput}:00`;
 
     try {
         const response = await fetch(`/api/requests/booked_PLCs?dateTimeStart=${encodeURIComponent(finalDateTimeStart)}&dateTimeEnd=${encodeURIComponent(finalDateTimeEnd)}`);
 
+
         if (!response.ok) {
             throw new Error('Failed to fetch booked PLCs');
         }
 
         const bookedPLCs = await response.json();
+
         updatePLCStyles(bookedPLCs);
     } catch (error) {
         console.error('Error fetching booked PLCs:', error);
@@ -94,8 +94,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 timeRange.addEventListener('mouseup', handleSliderChange);
 timeRange.addEventListener('touchend', handleSliderChange);
-
-document.addEventListener("")
 
 function setupRadioButtons() {
     const plcRadioButtons = document.querySelectorAll('input[name="plcRadio"]');

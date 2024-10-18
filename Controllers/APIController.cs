@@ -25,21 +25,8 @@ namespace plc_booking_interface.Controllers
             int startDateTime = DataAccess.ConvertDateToInt(dateTimeStart);
             int endDateTime = DataAccess.ConvertDateToInt(dateTimeEnd);
             List<int> bookedPLCs = DataAccess.GetAllBookedPLCs(startDateTime, endDateTime);
-
+            Console.WriteLine(startDateTime);
             return Ok(bookedPLCs);
-        }
-
-        [HttpGet("PLC_bookings")]
-        public IActionResult GetUnavailableTimeSlots(int plcId)
-        {
-            List<Tuple<DateTime, DateTime>> plcBookings = DataAccess.GetPLCBookings(plcId);
-            var plcBookingsJson = plcBookings.Select(booking => new
-            {
-                start = booking.Item1,
-                end = booking.Item2
-            }).ToList();
-
-            return Ok(plcBookingsJson);
         }
 
         [HttpDelete]
