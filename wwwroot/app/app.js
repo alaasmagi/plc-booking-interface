@@ -101,118 +101,12 @@ async function deleteRequests() {
         console.error('Error:', error);
     }
 }
-
-async function fetchPLCBookings(plcId) {
-    try {
-        const response = await fetch(`/api/requests/get_plc_bookings?plcId=${encodeURIComponent(plcId)}`);
-
-        if (!response.ok) {
-            throw new Error('Failed to fetch bookings data');
-        }
-
-        const bookings = await response.json();
-        return bookings;
-    } catch (error) {
-        console.error('Error fetching PLC bookings:', error);
-        return [];
-    }
-}
-
-function displayBookings(bookings) {
-    const plcUnavailableText = document.getElementById("plc-unavailable-text");
-    const plcAvailableText = document.getElementById("plc-available-text");
-
-    plcUnavailableText.innerHTML = '';
-    plcAvailableText.innerHTML = '';
-    const startHour = 0;
-    const endHour = 23;
-    const numDays = 7;
-
-    const bookedSlots = new Set();
-
-    // Process bookings and populate bookedSlots set
-    bookings.forEach(booking => {
-        const startTime = new Date(booking.start);
-        const endTime = new Date(booking.end);
-
-        let currentTime = new Date(startTime);
-        while (currentTime < endTime) {
-            bookedSlots.add(currentTime.toISOString());
-            currentTime.setMinutes(currentTime.getMinutes() + 30);
-        }
-
-        // Create booking display
-        const formattedStartTime = `${String(startTime.getHours()).padStart(2, '0')}:${String(startTime.getMinutes()).padStart(2, '0')}`;
-        const formattedEndTime = `${String(endTime.getHours()).padStart(2, '0')}:${String(endTime.getMinutes()).padStart(2, '0')}`;
-        const bookingText = document.createElement('p');
-        bookingText.textContent = `${formattedStartTime} - ${formattedEndTime}`;
-        plcUnavailableText.appendChild(bookingText);
-    });
-
-    const availableTimes = [];
-    const today = new Date();
-    today.setHours(startHour, 0, 0, 0);
-   for (let day = 0; day < numDays; day++) {
-    let currentTime = new Date(today);
-    currentTime.setDate(today.getDate() + day);
-    currentTime.setHours(startHour, 0, 0, 0);
-
-    // Check if there are any bookings for this day
-    let hasBookingsForDay = false;
-
-    // Collect bookings for the current day
-    while (currentTime.getHours() < endHour) {
-        const timeISO = currentTime.toISOString();
-        if (bookedSlots.has(timeISO)) {
-            hasBookingsForDay = true; // There are bookings for this day
-        }
-        currentTime.setMinutes(currentTime.getMinutes() + 30);
-    }
-
-    // If no bookings for the day, display full day availability
-    if (!hasBookingsForDay) {
-        availableTimes.push(`${currentTime.toDateString()} 00:00 - 23:30`);
-    } else {
-        // Reset currentTime for available slot calculation
-        currentTime.setDate(today.getDate() + day);
-        currentTime.setHours(startHour, 0, 0, 0);
-        while (currentTime.getHours() < endHour) {
-            const timeISO = currentTime.toISOString();
-            if (!bookedSlots.has(timeISO)) {
-                const formattedTime = `${String(currentTime.getHours()).padStart(2, '0')}:${String(currentTime.getMinutes()).padStart(2, '0')}`;
-                availableTimes.push(`${currentTime.toDateString()} ${formattedTime}`);
-            }
-            currentTime.setMinutes(currentTime.getMinutes() + 30);
-        }
-    }
-}
-
-    // Display available times
-    availableTimes.forEach(time => {
-        const timeText = document.createElement('p');
-        timeText.textContent = time;
-        plcAvailableText.appendChild(timeText);
-    });
-}
-
-
-async function initPLCBookingDisplay(plcId) {
-    const bookings = await fetchPLCBookings(plcId);
-    displayBookings(bookings);
-}
-
-
 document.addEventListener("DOMContentLoaded", initPLCBookingDisplay);
 
-
-
-toggleDateTimeControls();
 document.addEventListener("DOMContentLoaded", fetchBookedPLCs);
 bookingDateSelectionCalender.addEventListener("change", fetchBookedPLCs);
 timeRange.addEventListener('mouseup', fetchBookedPLCs);
 timeRange.addEventListener('touchend', fetchBookedPLCs);
-dateTimeNowCheckbox.addEventListener("change", toggleDateTimeControls, fetchBookedPLCs);
-
 function setupRadioButtons() {
     const plcRadioButtons = document.querySelectorAll('input[name="plcRadio"]');
 

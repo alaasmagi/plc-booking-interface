@@ -19,16 +19,6 @@
     <div class="page-main">
         <div class="plc-container">
             <div class="plc-container-header">
-                <div class="plc-date-selection">
-                    <div class="select-date">
-                        <b for="bookingDate">Vali kuupäev:</b>
-                        <input class="date-selection" type="date" id="bookingDate" name="bookingDate" value="">
-                    </div>
-                    <div class="datetime-now">
-                        <b for="dateTimeNow">Praegune hetk: </b>
-                        <input type="checkbox" name="dateTimeNow" id="dateTimeNow" checked />
-                    </div>
-                </div>
                 <div class="plc-time-selection">
                     <b>Vali kellaaeg:</b>
                     <input type="range" min="0" max="45" value="0" class="slider" id="timeRange" oninput="updateTime()">
@@ -114,23 +104,8 @@
                 <div class="plc-available-legend"></div> - vaba
                 <div class="plc-unavailable-legend"></div> - hõivatud
             </div>
-        </div>
-        <div class="info-container">
-            <div class="plc-info-container">
-                <div class="plc-info-title">
-                    <h1>Kontrolleri info: </h1>
-                </div>
-                <div class="plc-info-main">
-                    <b class="plc-availability-title">Vaba: </b>
-                    <div class="plc-available-info" id="plc-unavailable-text">
-                    </div>
-                    <b class="plc-availability-title">Hõivatud:</b>
-                    <div class="plc-unavailable-info" id="plc-available-text">
-                    </div>
-                </div>
-                <div class="plc-info-button">
-                    <button class="button" onclick="window.location.href='https://outlook.office365.com/owa/calendar/ICT356UnitronicsPLCBroneerimine@taltech.ee/bookings/';">Broneeri</button>
-                </div>
+            <div class="plc-info-button">
+                <button class="button" onclick="window.location.href='https://outlook.office365.com/owa/calendar/ICT356UnitronicsPLCBroneerimine@taltech.ee/bookings/';">Broneeri</button>
             </div>
             <div class="dev-info-container">
                 <a href="https://github.com/alaasmagi/plc-booking-interface">Project repo</a>
