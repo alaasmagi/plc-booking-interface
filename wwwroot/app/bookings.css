@@ -76,6 +76,7 @@ html, body {
 }
 
 .plc-container-main {
+    padding-top:4%;
     width: 100%;
     height: 55%;
 }
@@ -195,48 +196,59 @@ html, body {
     }
 
 
-    /*Mobile version*/
-@media (max-width: 2000px) and (min-height: 1500px){
+
+@media (max-width: 2000px) and (min-height: 1500px) {
+
     * {
-        font-size:28px;
+        font-size: 34px;
     }
-    html, body  {
-        flex-direction:column;
+
+    html, body {
+        flex-direction: column;
     }
+
     .page-header {
-        width:100%;
-        height:35%;
+        width: 100%;
+        height: 35%;
     }
-    .page-logo {
-        transform:scale(1.4);
+
+    .page-logo > img {
+        width: 280px;
+        height: 157px
     }
+
+    .page-title > h1 {
+        font-size: 70px;
     }
-    .page-title {
-        transform: scale(1.4);
-    }
-    .main-header {
-        transform:scale(1.4);
-    }
+
     .page-main {
-        width:100%;
+        width: 100%;
+        padding: 3%;
     }
-    .controller-row {
-        justify-content:space-evenly;
-    }
-    .plc-time-selection{
-        transform:scale(1.4);
+
+    .main-header > b {
+        font-size: 42px;
     }
 
     .plc-time-selection > b {
-        font-size: 28px;
+        font-size: 35px;
     }
+
+    .slider {
+        transform: scale(1.4);
+    }
+
+    .controller-row {
+        justify-content: space-evenly;
+    }
+
+    .radio-group {
+        justify-content: space-evenly;
+    }
+
     .plc-label {
-        font-size: 28px;
-        transform:scale(1.4);
+        width: 300px;
+        font-size: 34px;
+        flex-basis:20%;
     }
-    .plc-container-legend {
-        transform:scale(1.4);
-    }
-    .button{
-        font-size:34px;
-    }
+}
