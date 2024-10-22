@@ -25,7 +25,6 @@ namespace plc_booking_interface.Controllers
             int startDateTime = DataAccess.ConvertDateToInt(dateTimeStart);
             int endDateTime = DataAccess.ConvertDateToInt(dateTimeEnd);
             List<int> bookedPLCs = DataAccess.GetAllBookedPLCs(startDateTime, endDateTime);
-            Console.WriteLine(startDateTime);
             return Ok(bookedPLCs);
         }
 
@@ -108,6 +107,7 @@ namespace plc_booking_interface.Controllers
             RefreshTimer.Elapsed += RefreshElapseEvent;
             RefreshTimer.AutoReset = true;
             RefreshTimer.Enabled = true;
+            DataAccess.UpdateBookingsByRulesTxt();
         }
         private static void RefreshElapseEvent(Object source, ElapsedEventArgs e)
         {

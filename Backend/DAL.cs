@@ -12,6 +12,7 @@ namespace plc_booking_interface.Backend
                                             (AppDomain.CurrentDomain.BaseDirectory, @"../../../Data/")), "UL_data.db")};";
 
         private const string logFilePath = "logs.txt";
+        private const string rulesFilePath = "rules.txt";
 
         public int ConvertDateToInt(DateTime dateTime)
         {
@@ -96,7 +97,7 @@ namespace plc_booking_interface.Backend
                     LogMessage($"GetPLCName() operation unsuccessful. {ex}", "ERROR");
                 }
             }
-            return plcName;
+            return plcName!;
         }
 
         public int GetPLCId(string plcValue)
@@ -269,8 +270,36 @@ namespace plc_booking_interface.Backend
                 }
             }
 
-
             return PLCbookings;
+        }
+
+        public List<RuleEntry> UpdateBookingsByRulesTxt()
+        {
+            List<RuleEntry> rules = new List<RuleEntry>();
+            foreach (var line in File.ReadLines(rulesFilePath))
+            {
+                var trimmedLine = line.Trim();
+
+                if (trimmedLine.StartsWith("!"))
+                {
+                    string content = trimmedLine.Substring(1);
+
+                    var parts = content.Split(';');
+
+                    if (parts.Length == 4)
+                    {
+                        string dayOfWeek = parts[0];
+                        string startTime = parts[1];
+                        string endTime = parts[2];
+                        string plcIds = parts[3];
+                        Console.WriteLine(plcIds);
+
+                        rules.Add(new RuleEntry(dayOfWeek, startTime, endTime, plcIds));
+                    }
+                }
+            }
+            LogMessage($"rules.txt file had {rules.Count} entries.", "IMPORTANT");
+            return rules;
         }
 
 
