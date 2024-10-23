@@ -1,20 +1,19 @@
 Kuidas see toimib? / How does this work?
 
-See on formaadis [nädalapäev(lühend inglese keeles);HH:mm(algus);HH:mm(lõpp);<kõik PLCd, millele rakendada soovitakse> /
-It's in format [!day of week(abbreviation);HH:mm(start);HH:mm(end);<all PLCs to apply the rule to>
+See on formaadis [!nädalapäev(inglese keeles);HH:mm(algus);HH:mm(lõpp);<kõik PLCd, millele rakendada soovitakse> /
+It's in format [!day of week;HH:mm(start);HH:mm(end);<all PLCs to apply the rule to>
  
-Nädalapäevade lühendid / abbreviations of days of the week: [Mon, Tue, Wed, Thu, Fri, Sat, Sun]
 PLC-IDs: [1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009, 1010, 1011, 1012, 1013], A for all PLCs
 
 Näited / examples
-Tue;10:00;12:00;1001,1003,1006,1009,1010
-Fri;13:00;17:00;A
+Tuesday;10:00;12:00;1001,1003,1006,1009,1010
+Friday;13:00;17:00;A
 
 Liides arvestab ainult neid kirjeid, mille ees on hüüumärk(!) / Only lines with exclamation mark (!) at the start will be executed
 
 Tunniplaan 2024/25 sügis / timetable 2024/25 fall
 
-!Mon;14:30;16:00;A
-!Thu;14:00;16:00;A
-!Fri;09:00;11:15;A
-!Fri;14:00;17:15;A
+!Monday;14:30;16:00;A
+!Thursday;14:00;16:00;A
+!Friday;09:00;11:15;A
+!Friday;14:00;17:15;A

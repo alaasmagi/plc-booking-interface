@@ -62,6 +62,21 @@ namespace plc_booking_app.Backend
             }
         }
 
+        public static DateTime GetNearestDayOfWeek(string dayOfWeek)
+        { 
+            var targetDayOfWeek = (DayOfWeek)Enum.Parse(typeof(DayOfWeek), dayOfWeek, true);
+            DateTime today = DateTime.Today;
+            int daysToAdd = ((int)targetDayOfWeek - (int)today.DayOfWeek + 7) % 7;
+
+            if (daysToAdd == 0 && today.DayOfWeek.ToString() != dayOfWeek)
+            {
+                daysToAdd = 7;
+            }
+
+            return today.AddDays(daysToAdd);
+        }
+
+
         public void FormulatingRulesRequests(List<RuleEntry> rules)
         {
             foreach (RuleEntry rule in rules)

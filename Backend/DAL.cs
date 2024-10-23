@@ -292,7 +292,6 @@ namespace plc_booking_interface.Backend
                         string startTime = parts[1];
                         string endTime = parts[2];
                         string plcIds = parts[3];
-                        Console.WriteLine(plcIds);
 
                         rules.Add(new RuleEntry(dayOfWeek, startTime, endTime, plcIds));
                     }
