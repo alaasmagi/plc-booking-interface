@@ -107,7 +107,6 @@ namespace plc_booking_interface.Controllers
             RefreshTimer.Elapsed += RefreshElapseEvent;
             RefreshTimer.AutoReset = true;
             RefreshTimer.Enabled = true;
-            DataAccess.UpdateBookingsByRulesTxt();
         }
         private static void RefreshElapseEvent(Object source, ElapsedEventArgs e)
         {

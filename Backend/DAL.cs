@@ -130,6 +130,7 @@ namespace plc_booking_interface.Backend
             return plcId;
         }
 
+
         public bool DoesBookingExist(string bookingId)
         {
             bool exists = false;
@@ -159,9 +160,12 @@ namespace plc_booking_interface.Backend
             return exists;
         }
 
-        public void InsertNewBooking(Request request)
+        public void InsertNewBooking(Request request, int plcId)
         {
-            int plcId = GetPLCId(request.plcValue);
+            if (plcId == 0)
+            {
+                plcId = GetPLCId(request.plcValue);
+            }
             int bookingStart = ConvertDateToInt(request.bookingStart); 
             int bookingEnd = ConvertDateToInt(request.bookingEnd);
 
@@ -169,7 +173,7 @@ namespace plc_booking_interface.Backend
 
             if (DoesBookingExist(request.bookingId) == true)
             {
-                LogMessage($"Booking already exists. Booking-ID: {request.bookingId}", "WARNING");
+                LogMessage($"Booking already exists. Booking-ID: {request.bookingId}", "INFORMATION");
                 return;
             }
             using (SqliteConnection connection = new SqliteConnection(databaseConnection))
@@ -178,7 +182,7 @@ namespace plc_booking_interface.Backend
                 {
                     connection.Open();
                     string query = "INSERT INTO UL_PLC_BOOKINGS (plc_id, booking_id, start, end) " +
-                                    "VALUES (@plcId, @bookingId, @startTimestamp, @endTimestamp);";
+                                    "VALUES (@plcId, @bookingId, @startTimestamp, @endTimestamp) ON CONFLICT(booking_id) DO NOTHING;";
                     using (SqliteCommand command = new SqliteCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@plcId", plcId);

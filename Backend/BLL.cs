@@ -14,12 +14,11 @@ using System.Security.Cryptography.X509Certificates;
 using plc_booking_interface.Backend;
 using System.Timers;
 
-
-
 namespace plc_booking_app.Backend
 {
     public class BLL
     {
+        public static int totalNrOfPLCs = 13;
         public static DAL DataAccess = new DAL();
         public static System.Timers.Timer SystemCleanTimer;
 
@@ -45,12 +44,12 @@ namespace plc_booking_app.Backend
         {
             if (request.requestBody == "occupy" && DataAccess.GetPLCId(request.plcValue) > 0)
             {
-                DataAccess.InsertNewBooking(request);
+                DataAccess.InsertNewBooking(request, 0);
             }
             else if (request.requestBody == "update" && DataAccess.GetPLCId(request.plcValue) > 0)
             {
                 DataAccess.RemoveBooking(request.bookingId);
-                DataAccess.InsertNewBooking(request);
+                DataAccess.InsertNewBooking(request, 0);
             }
             else if (request.requestBody == "cancel" && DataAccess.GetPLCId(request.plcValue) > 0)
             {
@@ -76,21 +75,53 @@ namespace plc_booking_app.Backend
             return today.AddDays(daysToAdd);
         }
 
+        public static List<int> GetAllPLCsFromRule(string rulePLCPart)
+        {
+            var result = new List<int>();
 
-        public void FormulatingRulesRequests(List<RuleEntry> rules)
+            if (rulePLCPart == "A")
+            {
+                for (int i = 1; i < totalNrOfPLCs + 1; i++)
+                {
+                    result.Add(1000 + i);
+                }
+                return result;
+            }
+
+            var PLCids = rulePLCPart.Split(',');
+
+            foreach (var PLCid in PLCids)
+            {
+                result.Add(int.Parse(PLCid));
+            }
+
+            return result;
+        }
+
+
+        public static void ApplyingRules(List<RuleEntry> rules)
         {
             foreach (RuleEntry rule in rules)
             {
-                if (rule.PlcIds == "A")
-                {
+                var plcIds = GetAllPLCsFromRule(rule.PlcIds);
 
+                foreach (var plcId in plcIds)
+                {
+                    Request request = new Request();
+
+                    request.requestTimestamp = DateTime.Now;
+                    request.bookingStart = GetNearestDayOfWeek(rule.DayOfWeek).Add(TimeSpan.Parse(rule.StartTime));
+                    request.bookingEnd = GetNearestDayOfWeek(rule.DayOfWeek).Add(TimeSpan.Parse(rule.EndTime));
+                    request.bookingId = DataAccess.ConvertDateToInt(request.bookingStart).ToString() + plcId;
+                    DataAccess.InsertNewBooking(request, plcId);
                 }
             }
-
         }
 
         public static void StartSystemCleanTimer()
         {
+            var rules = DataAccess.UpdateBookingsByRulesTxt();
+            ApplyingRules(rules);
             SystemCleanTimer = new System.Timers.Timer(86400000);
             SystemCleanTimer.Elapsed += SystemCleanElapseEvent;
             SystemCleanTimer.AutoReset = true;
@@ -100,9 +131,6 @@ namespace plc_booking_app.Backend
         private static void SystemCleanElapseEvent(Object source, ElapsedEventArgs e)
         {
             DataAccess.SystemClean();
-        }
-        
-
-        
+        }       
     }
 }

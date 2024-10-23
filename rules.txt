@@ -17,3 +17,4 @@ Tunniplaan 2024/25 sügis / timetable 2024/25 fall
 !Thursday;14:00;16:00;A
 !Friday;09:00;11:15;A
 !Friday;14:00;17:15;A
+
