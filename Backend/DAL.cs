@@ -296,6 +296,10 @@ namespace plc_booking_interface.Backend
 
                         rules.Add(new RuleEntry(dayOfWeek, startTime, endTime, plcIds));
                     }
+                    else
+                    {
+                        LogMessage("rules.txt file had an incorrectly formated entry.", "WARNING");
+                    }
                 }
             }
             LogMessage($"rules.txt file had {rules.Count} entries.", "IMPORTANT");

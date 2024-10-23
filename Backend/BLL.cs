@@ -35,7 +35,7 @@ namespace plc_booking_app.Backend
                 var credentialString = Encoding.UTF8.GetString(Convert.FromBase64String(token));
                 var credentials = credentialString.Split(':');
 
-                return credentials.Length == 2 && credentials[0] == Environment.GetEnvironmentVariable("PLC_API_USER") && credentials[1] == 
+                return credentials.Length == 2 && credentials[0] == Environment.GetEnvironmentVariable("PLC_API_USER") && credentials[1] ==
                                                                                                 Environment.GetEnvironmentVariable("PLC_API_PASS");
             }
             return false;
@@ -62,6 +62,18 @@ namespace plc_booking_app.Backend
             }
         }
 
+        public void FormulatingRulesRequests(List<RuleEntry> rules)
+        {
+            foreach (RuleEntry rule in rules)
+            {
+                if (rule.PlcIds == "A")
+                {
+
+                }
+            }
+
+        }
+
         public static void StartSystemCleanTimer()
         {
             SystemCleanTimer = new System.Timers.Timer(86400000);
@@ -73,7 +85,9 @@ namespace plc_booking_app.Backend
         private static void SystemCleanElapseEvent(Object source, ElapsedEventArgs e)
         {
             DataAccess.SystemClean();
-        }        
+        }
+        
+
         
     }
 }
