@@ -63,6 +63,8 @@ function updatePLCStyles(bookedPLCs) {
             }
         });
     }
+
+    deleteRequests;
 }
 
 async function deleteRequests() {
