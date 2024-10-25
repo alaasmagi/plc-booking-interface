@@ -243,6 +243,7 @@ html, body {
     .plc-info-button {
     }
     .dev-info-container {
+        text-align:right;
         right:0;
         top:0;
         bottom: auto;
