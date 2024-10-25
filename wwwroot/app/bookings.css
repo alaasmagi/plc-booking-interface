@@ -243,6 +243,7 @@ html, body {
     .plc-info-button {
     }
     .dev-info-container {
-        width:50%;
+        right:0;
+        top:0;
     }
 }
