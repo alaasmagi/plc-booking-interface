@@ -114,12 +114,11 @@ html, body {
 }
 
 .dev-info-container {
-    padding-top: 5%;
-    width: 35%;
-    text-align: left;
+    width:100%;
+    text-align:left;
+    position:absolute;
     bottom: 0;
-    left: 0;
-    position: absolute;
+    left:0;
 }
     .dev-info-container > a {
         text-decoration:none;
