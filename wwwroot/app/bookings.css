@@ -241,7 +241,9 @@ html, body {
         font-size: 34px;
         flex-basis:20%;
     }
+    .plc-info-button {
+    }
     .dev-info-container {
-        width:100%;
+        width:50%;
     }
 }
