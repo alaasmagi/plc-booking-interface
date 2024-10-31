@@ -1,8 +1,6 @@
 ﻿"use strict";
 
 const timeRange = document.getElementById("timeRange");
-const plcUnavailableText = document.getElementById("plc-unavailable-text");
-const plcAvailableText = document.getElementById("plc-available-text");
 const selectedTimeStartDisplay = document.getElementById("selectedTimeStart");
 const selectedTimeEndDisplay = document.getElementById("selectedTimeEnd");
 const displayDate = document.getElementById("dateValue");

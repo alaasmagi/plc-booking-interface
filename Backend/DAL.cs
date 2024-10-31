@@ -181,7 +181,7 @@ namespace plc_booking_interface.Backend
                 {
                     connection.Open();
                     string query = "INSERT INTO UL_PLC_BOOKINGS (plc_id, booking_id, start, end) " +
-                                    "VALUES (@plcId, @bookingId, @startTimestamp, @endTimestamp) ON CONFLICT(booking_id) DO NOTHING;";
+                                    "VALUES (@plcId, @bookingId, @startTimestamp, @endTimestamp) ON CONFLICT (booking_id) DO NOTHING;";
                     using (SqliteCommand command = new SqliteCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@plcId", plcId);
