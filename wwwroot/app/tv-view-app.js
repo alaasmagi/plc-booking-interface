@@ -55,15 +55,15 @@ function updatePLCStyles(bookedPLCs) {
 
     if (bookedPLCs.length === 0) {
         PLCentities.forEach(label => {
-            label.style.border = '10px solid #37A7BD';
+            label.style.border = '12px solid #37A7BD';
         });
     } else {
         PLCentities.forEach(label => {
             const plcId = parseInt(label.getAttribute('id'));
             if (bookedPLCs.includes(plcId)) {
-                label.style.border = '10px solid #BD4D37';
+                label.style.border = '12px solid #BD4D37';
             } else {
-                label.style.border = '10px solid #37A7BD';
+                label.style.border = '12px solid #37A7BD';
             }
         });
     }

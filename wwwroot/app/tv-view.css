@@ -10,7 +10,7 @@
 
 * {
     font-family: 'Roboto', sans-serif;
-    font-size: 28px;
+    font-size: 40px;
     color: #257180;
     box-sizing: border-box
 }
@@ -43,7 +43,7 @@ html, body {
     }
 
     .page-qr > h1 {
-        font-size: 50px;
+        font-size: 60px;
         text-align: center;
         margin-bottom: 0;
     }
@@ -57,11 +57,12 @@ html, body {
 
 .main-header {
     height: 10%;
-    text-align: center
+    text-align: center;
+    padding-top: 5%;
 }
 
     .main-header > b {
-        font-size: 30px;
+        font-size: 45px;
     }
 
 .plc-container {
@@ -82,20 +83,20 @@ html, body {
 }
 
 .plc-available-legend {
-    width: 60px;
-    height: 35px;
+    width: 70px;
+    height: 40px;
     background-color: var(--color-light);
     border-radius: 10px;
-    border: 7px solid var(--plc-available);
+    border: 9px solid var(--plc-available);
     margin-right: 2%;
 }
 
 .plc-unavailable-legend {
-    width: 60px;
-    height: 35px;
+    width: 70px;
+    height: 40px;
     background-color: var(--color-light);
     border-radius: 10px;
-    border: 7px solid var(--plc-unavailable);
+    border: 9px solid var(--plc-unavailable);
     margin-left: 10%;
     margin-right: 2%;
 }
@@ -128,7 +129,7 @@ html, body {
     background-color: var(--button-background);
     border-radius: 10px;
     font-weight: bold;
-    font-size: 28px;
+    font-size: 40px;
     transition: background-color 0.2s, border-color 0.2s;
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.7);
 }
