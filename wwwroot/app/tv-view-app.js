@@ -27,7 +27,7 @@ async function fetchBookedPLCs() {
 
     const startTimeString = `${hours}:${minutes}:00`; 
     const endTimeDate = new Date(currentDate); 
-    endTimeDate.setHours(currentDate.getHours() + 1);
+    endTimeDate.setMinutes(currentDate.getMinutes() + 15);
     const endHours = String(endTimeDate.getHours()).padStart(2, '0');
     const endMinutes = String(endTimeDate.getMinutes()).padStart(2, '0');
     const endTimeString = `${endHours}:${endMinutes}:00`; 
