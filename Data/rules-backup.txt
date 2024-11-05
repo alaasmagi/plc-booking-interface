@@ -1,7 +1,7 @@
 Kuidas see toimib? / How does this work?
 
 See on formaadis [nädalapäev(lühend inglese keeles);HH:mm(algus);HH:mm(lõpp);<kõik PLCd, millele rakendada soovitakse> /
-It's in format [!day of week(abbreviation);HH:mm(start);HH:mm(end);<all PLCs to apply the rule to>
+It's in format [!day of week(abbreviation);HH:mm(start);HH:mm(end);<all PLCs to apply the rule to>]
  
 Nädalapäevade lühendid / abbreviations of days of the week: [Mon, Tue, Wed, Thu, Fri, Sat, Sun]
 PLC-IDs: [1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009, 1010, 1011, 1012, 1013], A for all PLCs
