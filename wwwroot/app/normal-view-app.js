@@ -3,7 +3,6 @@
 const timeRange = document.getElementById("timeRange");
 const selectedTimeStartDisplay = document.getElementById("selectedTimeStart");
 const selectedTimeEndDisplay = document.getElementById("selectedTimeEnd");
-const displayDate = document.getElementById("dateValue");
 
 function updateTime() {
     const startHour = Math.floor(timeRange.value / 2);
@@ -118,7 +117,6 @@ function initializeSlider() {
         month: 'long',
         year: 'numeric'
     }).format(currentDate);
-    displayDate.textContent = formattedDate;
 
     const sliderValue = (currentHour * 2) + Math.floor(currentMinutes / 30);
 

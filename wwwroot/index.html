@@ -17,18 +17,14 @@
         </div>
         <div class="dev-info-container">
             <a href="https://github.com/alaasmagi/plc-booking-interface">Project repo</a>
-            <a href="https://www.linkedin.com/in/alaasmagi/"> Developer</a>
         </div>
     </div>
     <div class="page-main">
-        <div class="main-header">
-            <b>Date: </b>
-            <b id="dateValue"></b>
-        </div>
         <div class="plc-time-selection">
             <b>Choose time:</b>
             <input type="range" min="0" max="45" value="0" class="slider" id="timeRange" oninput="updateTime()">
             <br />
+            <b>Today: </b>
             <b id="selectedTimeStart">00:00</b> - <b id="selectedTimeEnd">01:00</b>
         </div>
         <div class="plc-container-main">
