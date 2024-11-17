@@ -142,3 +142,15 @@ The interface uses rules to implement this feature. Rules are in rules.txt file 
 * Host the backend on platforms like AWS, Azure, or GCP for scalability and reliability.
 * Store the SQLite database in a cloud-hosted database service such as AWS RDS or Azure SQL Database.
 
+## Illustrative images
+### Main UI in desktop view:
+![Screenshot 2024-11-17 154938-front](https://github.com/user-attachments/assets/891a6e94-1aec-4b13-893c-fe89cebc3e26)
+
+### Main UI in mobile view:
+![Screenshot_20241117-155023-portrait](https://github.com/user-attachments/assets/545aa73e-ebfd-4c13-9c60-3b588199869e)
+
+### TV UI:
+![Screenshot 2024-11-17 155050-front](https://github.com/user-attachments/assets/a7868099-9f16-4abc-8093-ff1cec02854e)
+
+
+
