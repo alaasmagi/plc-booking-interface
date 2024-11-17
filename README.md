@@ -40,7 +40,7 @@ DTOs are used for communicating with Power Automate (via HTTP) and SQLite databa
 
 * **Request:**
 
-```
+```csharp
 public class Request
 {
     public DateTime requestTimestamp { get; set; }
@@ -50,12 +50,11 @@ public class Request
     public string? plcValue { get; set; }
     public string? requestBody { get; set; }
 }
-
 ```
   
 * **RuleEntry:**
 
-```
+```csharp
 public class RuleEntry
 {
     public string DayOfWeek { get; set; }
@@ -71,7 +70,6 @@ public class RuleEntry
         PlcIds = plcIds;
     }
 }
-
 ```
 
 ### Data management
