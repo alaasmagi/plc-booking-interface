@@ -8,8 +8,7 @@ namespace plc_booking_interface.Backend
 {
     public class DAL
     {
-        string databaseConnection = $"Data Source={Path.Combine(Path.GetFullPath(Path.Combine
-                                            (AppDomain.CurrentDomain.BaseDirectory, @"../../../Data/")), "UL_data.db")};";
+        string databaseConnection = $"Data Source=./Data/UL_data.db";
 
         private const string logFilePath = "logs.txt";
         private const string rulesFilePath = "rules.txt";

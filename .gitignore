@@ -364,3 +364,7 @@ FodyWeavers.xsd
 
 # Log file
 logs.txt
+
+# Ignore certificate files
+*.pfx
+*.pem

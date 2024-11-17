@@ -25,7 +25,6 @@ namespace plc_booking_interface.Controllers
             int startDateTime = DataAccess.ConvertDateToInt(dateTimeStart);
             int endDateTime = DataAccess.ConvertDateToInt(dateTimeEnd);
             List<int> bookedPLCs = DataAccess.GetAllBookedPLCs(startDateTime, endDateTime);
-            Console.WriteLine("Korras");
             return Ok(bookedPLCs);
         }
 

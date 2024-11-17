@@ -10,6 +10,8 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["plc-booking-interface.csproj", "."]
+COPY rules.txt ./rules.txt
+COPY Data/UL_data.db ./Data/UL_data.db
 RUN dotnet restore "./plc-booking-interface.csproj"
 COPY . .
 WORKDIR "/src/."
@@ -22,4 +24,7 @@ RUN dotnet publish "./plc-booking-interface.csproj" -c $BUILD_CONFIGURATION -o /
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+COPY cert.pfx /app/cert.pfx
+COPY rules.txt ./rules.txt
+COPY Data/UL_data.db ./Data/UL_data.db
 ENTRYPOINT ["dotnet", "plc-booking-interface.dll"]
