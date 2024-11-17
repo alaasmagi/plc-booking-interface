@@ -77,9 +77,29 @@ The application uses SQLite database and it stores data locally.
 
 Data is separated between 2 tables. Each table has its own use.
 
-* **UL_PLC_DICTIONARY** - stores all PLC data (plc_id, plc_value, plc_name).
+* **UL_PLC_DICTIONARY** - stores all PLC data:
+
+```sql
+CREATE TABLE "UL_PLC_DICTIONARY" (
+	"plc_id"	INTEGER NOT NULL UNIQUE,
+	"plc_value"	TEXT NOT NULL UNIQUE,
+	"plc_name"	TEXT NOT NULL UNIQUE,
+	"class_PC_ip"	TEXT,
+	PRIMARY KEY("plc_id")
+);
+```
   
-* **UL_PLC_BOOKINGS** - stores all bookings (plc_id, booking_id, start, end).
+* **UL_PLC_BOOKINGS** - stores all bookings:
+
+```sql
+CREATE TABLE "UL_PLC_BOOKINGS" (
+	"plc_id"	INTEGER NOT NULL,
+	"booking_id"	TEXT NOT NULL UNIQUE,
+	"start"	INTEGER NOT NULL,
+	"end"	INTEGER NOT NULL,
+	PRIMARY KEY("booking_id")
+);
+```
 
 ### Rule entry
 The interface enables teachers/lecturers to book all (or some of) the PLCs for specific timeslots in repeated pattern (ig. timetable). The feature was requested by our supervisor, because it made him easy to book all PLCs for lectures or lab works.
