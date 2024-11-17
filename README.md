@@ -107,13 +107,38 @@ The interface enables teachers/lecturers to book all (or some of) the PLCs for s
 The interface uses rules to implement this feature. Rules are in rules.txt file and are in format:  
 `!day of week(abbreviation);HH:mm(start);HH:mm(end);<all PLCs to apply the rule to>`.
 
+## Testing and Debugging
+* **Frontend Testing:** Open index.html or tv-view.html in a browser to validate the UI functionality.
+* **Backend Testing:** Use tools like Postman to send HTTP requests to the API endpoints and verify responses.
+* **Database Debugging:** Open the SQLite database file (plc_booking.db) using tools like DB Browser for SQLite to check stored data manually.
+
+## Developer Guide
+
+### Adding New API Endpoints
+* Create a new method in the APIController class to handle the endpoint.
+* Add corresponding business logic in the BusinessLogic class.
+* Update the SQLite database schema if required and document the changes.
+
+### Adding New Frontend Features
+* Modify index.html or tv-view.html and link to new JavaScript or CSS files as needed.
+* Use the existing backend endpoints or create new ones for dynamic data fetching.
+
+## Known Limitations
+* No support for recurring bookings directly through the UI.
+* Application is not optimized for heavy concurrent user loads (as it currently serves purpose in only one classroom).
+
 ## Scaling possibilities
 
-### TV UI experience enhancements
-TV UI experience can be enhanced with a lot more features (ig. booking reminders)
+### TV UI Experience Enhancements
+* Add features like booking reminders or display additional details about bookings.
 
-### API enhancements
-API can be developed to send requests to notify users if they are trying to use already occupied PLC without making a reservation.
+### API Enhancements
+* Enable the API to send notifications to users if they attempt to use an already occupied PLC without making a reservation.
 
-### iOS/Android application
-It is possible to create a phone application which contains UI. Backend still runs on a different server.
+###Mobile Application
+* Create a dedicated iOS/Android application containing the same UIs, while the backend runs on a separate server.
+
+### Cloud Integration
+* Host the backend on platforms like AWS, Azure, or GCP for scalability and reliability.
+* Store the SQLite database in a cloud-hosted database service such as AWS RDS or Azure SQL Database.
+
