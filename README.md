@@ -104,7 +104,8 @@ CREATE TABLE "UL_PLC_BOOKINGS" (
 ### Rule entry
 The interface enables teachers/lecturers to book all (or some of) the PLCs for specific timeslots in repeated pattern (ig. timetable). The feature was requested by our supervisor, because it made him easy to book all PLCs for lectures or lab works.
 
-The interface uses rules to implement this feature. Rules are in rules.txt file and are in format: `!day of week(abbreviation);HH:mm(start);HH:mm(end);<all PLCs to apply the rule to>`.
+The interface uses rules to implement this feature. Rules are in rules.txt file and are in format: 
+`!day of week(abbreviation);HH:mm(start);HH:mm(end);<all PLCs to apply the rule to>`.
 
 ## Scaling possibilities
 
