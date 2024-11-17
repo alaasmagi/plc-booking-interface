@@ -124,7 +124,7 @@ The interface uses rules to implement this feature. Rules are in rules.txt file 
 * Use the existing backend endpoints or create new ones for dynamic data fetching.
 
 ## Known Limitations
-* No support for recurring bookings directly through the UI.
+* No support for recurring bookings directly through the interface's own UI.
 * Application is not optimized for heavy concurrent user loads (as it currently serves purpose in only one classroom).
 
 ## Scaling possibilities
@@ -135,7 +135,7 @@ The interface uses rules to implement this feature. Rules are in rules.txt file 
 ### API Enhancements
 * Enable the API to send notifications to users if they attempt to use an already occupied PLC without making a reservation.
 
-###Mobile Application
+### Mobile Application
 * Create a dedicated iOS/Android application containing the same UIs, while the backend runs on a separate server.
 
 ### Cloud Integration
