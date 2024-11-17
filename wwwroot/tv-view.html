@@ -22,14 +22,14 @@
             <b id="timeValue"></b>
             <b id="timeValue"></b>
         </div>
-        <div class="plc-time-selection">
+        <div class="time-selector">
             <input type="hidden" min="0" max="45" value="0" class="slider" id="timeRange" oninput="updateTime()">
             <br />
             <b hidden id="selectedTimeStart">00:00</b> <b hidden id="selectedTimeEnd">01:00</b>
         </div>
-        <div class="plc-container-main" height="100%">
-            <div class="radio-group">
-                <div class="controller-row">
+        <div class="info-container-main" height="100%">
+            <div class="label-group">
+                <div class="label-row">
                     <label class="plc-label" id="1001">
                         PLC-1
                     </label>
@@ -46,7 +46,7 @@
                         PLC-4
                     </label>
                 </div>
-                <div class="controller-row">
+                <div class="label-row">
                     <label class="plc-label" id="1005">
                         PLC-5
                     </label>
@@ -63,7 +63,7 @@
                         PLC-8
                     </label>
                 </div>
-                <div class="controller-row">
+                <div class="label-row">
                     <label class="plc-label" id="1009">
                         PLC-9
                     </label>
@@ -80,16 +80,16 @@
                         PLC-12
                     </label>
                 </div>
-                <div class="controller-row">
+                <div class="label-row">
                     <label class="plc-label" id="1013">
                         PLC-13
                     </label>
                 </div>
             </div>
         </div>
-        <div class="plc-container-legend">
-            <div class="plc-available-legend"></div> - available
-            <div class="plc-unavailable-legend"></div> - booked
+        <div class="legend-container">
+            <div class="available-legend"></div> - available
+            <div class="unavailable-legend"></div> - booked
         </div>
     </div>
     <script src="/app/tv-view-app.js"></script>

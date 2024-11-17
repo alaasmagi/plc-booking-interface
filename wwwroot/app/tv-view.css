@@ -65,24 +65,20 @@ html, body {
         font-size: 45px;
     }
 
-.plc-container {
-    width: 100%;
-}
-
-.plc-container-main {
+.info-container-main {
     padding-top: 4%;
     width: 100%;
     height: 75%;
     margin-bottom: 2%;
 }
 
-.plc-container-legend {
+.legend-container {
     width: 100%;
     display: flex;
     justify-content: center;
 }
 
-.plc-available-legend {
+.available-legend {
     width: 70px;
     height: 40px;
     background-color: var(--color-light);
@@ -91,7 +87,7 @@ html, body {
     margin-right: 2%;
 }
 
-.plc-unavailable-legend {
+.unavailable-legend {
     width: 70px;
     height: 40px;
     background-color: var(--color-light);
@@ -102,14 +98,14 @@ html, body {
 }
 
 /*Addons*/
-.controller-row {
+.label-row {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     width: 100%;
 }
 
-.radio-group {
+.label-group {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;

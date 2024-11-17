@@ -3,6 +3,10 @@
 const displayDate = document.getElementById("dateValue");
 const displayTime = document.getElementById("timeValue");
 
+const updatePage = () => {
+    location.reload(true);
+}
+
 function updateDateTime() {
     const currentDate = new Date();
     const currentDateString = currentDate.toLocaleDateString('de-DE');
@@ -13,9 +17,6 @@ function updateDateTime() {
     displayDate.textContent = currentDateString;
     displayTime.textContent = `${hours}:${minutes}`;
 }
-
-updateDateTime();
-
 
 async function fetchBookedPLCs() {
     const currentDate = new Date();
@@ -48,7 +49,6 @@ async function fetchBookedPLCs() {
         console.error('Error fetching booked PLCs:', error);
     }
 }
-
 
 function updatePLCStyles(bookedPLCs) {
     const PLCentities = document.querySelectorAll('.plc-label');
@@ -94,9 +94,10 @@ async function deleteRequests() {
 
 document.addEventListener("DOMContentLoaded", () => {
     setupRadioButtons();
+    updateDateTime();
     fetchBookedPLCs();
+    setTimeout(updatePage, 15 * 1000);
 });
-
 
 function setupRadioButtons() {
     const plcRadioButtons = document.querySelectorAll('input[name="plcRadio"]');

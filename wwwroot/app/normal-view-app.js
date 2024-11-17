@@ -4,6 +4,11 @@ const timeRange = document.getElementById("timeRange");
 const selectedTimeStartDisplay = document.getElementById("selectedTimeStart");
 const selectedTimeEndDisplay = document.getElementById("selectedTimeEnd");
 
+
+const updatePage = () => {
+    location.reload(true);
+}
+
 function updateTime() {
     const startHour = Math.floor(timeRange.value / 2);
     const startMinutes = (timeRange.value % 2) * 30;
@@ -60,7 +65,6 @@ function updatePLCStyles(bookedPLCs) {
             }
         });
     }
-
     deleteRequests;
 }
 
@@ -89,6 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setupRadioButtons();
     initializeSlider();
     fetchBookedPLCs();
+    setTimeout(updatePage, 60 * 1000);
 });
 
 timeRange.addEventListener('mouseup', handleSliderChange);
