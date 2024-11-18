@@ -146,9 +146,6 @@ The interface uses rules to implement this feature. Rules are in rules.txt file 
 ### Main UI in desktop view:
 ![Screenshot 2024-11-17 154938-front](https://github.com/user-attachments/assets/bcf938b5-d243-4f00-b4fa-1592a5a15865)
 
-### Main UI in mobile view:
-![output-onlinepngtools (3)](https://github.com/user-attachments/assets/665da045-c0dc-47e5-8099-0393082d50d5)
-
 ### TV UI:
 ![Screenshot 2024-11-17 155050-front](https://github.com/user-attachments/assets/39d7b5d1-e606-4ffc-bd21-a5a9ed411a33)
 
