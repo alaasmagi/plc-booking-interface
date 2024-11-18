@@ -143,7 +143,7 @@ The interface uses rules to implement this feature. Rules are in rules.txt file 
 * Store the SQLite database in a cloud-hosted database service such as AWS RDS or Azure SQL Database.
 
 ## Illustrative images
-### Main UI in desktop view:
+### Main UI:
 ![Screenshot 2024-11-17 154938-front](https://github.com/user-attachments/assets/bcf938b5-d243-4f00-b4fa-1592a5a15865)
 
 ### TV UI:
