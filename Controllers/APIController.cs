@@ -32,7 +32,6 @@ namespace plc_booking_interface.Controllers
         public IActionResult DeleteAllRequests()
         {
             _requests.Clear();
-            Console.WriteLine("Timm");
             return Ok("All requests have been deleted successfully.");
         }
 
