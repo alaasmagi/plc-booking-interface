@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setupRadioButtons();
     updateDateTime();
     fetchBookedPLCs();
-    setTimeout(updatePage, 15 * 1000);
+    setTimeout(updatePage, 30 * 1000);
 });
 
 function setupRadioButtons() {
