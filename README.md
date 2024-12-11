@@ -127,6 +127,10 @@ The interface uses rules to implement this feature. Rules are in rules.txt file 
 * No support for recurring bookings directly through the interface's own UI.
 * Application is not optimized for heavy concurrent user loads (as it currently serves purpose in only one classroom).
 
+## Detailed Documentation
+[Report of the project[Estonian]](https://github.com/user-attachments/files/18097729/A.S.projekti.aruanne.pdf)
+
+
 ## Scaling possibilities
 
 ### TV UI Experience Enhancements
