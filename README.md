@@ -136,7 +136,7 @@ The interface uses rules to implement this feature. Rules are in rules.txt file 
 * Enable the API to send notifications to users if they attempt to use an already occupied PLC without making a reservation.
 
 ### Mobile Application
-* Create a dedicated iOS/Android application containing the same UIs, while the backend runs on a separate server.
+* Create a dedicated iOS/Android application containing the Main UI, while the backend runs on a separate server.
 
 ### Cloud Integration
 * Host the backend on platforms like AWS, Azure, or GCP for scalability and reliability.
